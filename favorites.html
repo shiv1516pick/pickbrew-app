@@ -11,18 +11,30 @@
 </head>
 
 <body class="bg-black text-white">
-    <div class="lg:hidden max-w-md mx-auto min-h-screen bg-black relative">
-        <div class="h-28 bg-[#5a7479] flex items-center justify-center">
-            <h1 class="text-2xl font-semibold">Favorites</h1>
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+
+        <!-- Header -->
+        <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <h1 class="text-2xl font-semibold text-center">Favorites</h1>
         </div>
+
+        <!-- Content -->
         <div
-            class="bg-[#121212] rounded-t-[2.5rem] -mt-6 px-6 pt-16 pb-28 min-h-[calc(100vh-5rem)] flex justify-center items-center">
-            <p class="text-center text-[#c8a27a] text-sm leading-relaxed">
-                You don't habe any favorite item
-            </p>
+            class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto flex justify-center items-center">
+            <div class="text-center px-6">
+                <span class="material-symbols-outlined text-[48px] text-gray-600 mb-3 block">favorite_border</span>
+                <p class="text-[#c8a27a] text-sm leading-relaxed">
+                    You don't have any favorite items yet
+                </p>
+                <a href="menu.html"
+                    class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">
+                    Browse Menu
+                </a>
+            </div>
         </div>
-        <div
-            class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-black border-t border-gray-800 flex justify-around py-3">
+
+        <!-- Bottom nav -->
+        <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
             </a>

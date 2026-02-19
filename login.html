@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PickBrew App — Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-black text-white">
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+
+        <!-- Header -->
+        <div class="h-44 shrink-0 bg-[#5a7479] flex flex-col items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[48px]">local_cafe</span>
+            <h1 class="text-2xl font-semibold">PickBrew</h1>
+            <p class="text-sm opacity-80">Your favorite coffee, one tap away</p>
+        </div>
+
+        <!-- Content -->
+        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <div class="px-6 pt-8 pb-8">
+
+                <h2 class="text-xl font-semibold mb-1">Welcome back</h2>
+                <p class="text-sm text-gray-400 mb-8">Sign in to your account</p>
+
+                <!-- Email -->
+                <div class="mb-5">
+                    <label class="block text-sm text-gray-300 mb-2">Email</label>
+                    <input type="email" placeholder="you@example.com"
+                        class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                </div>
+
+                <!-- Password -->
+                <div class="mb-5">
+                    <label class="block text-sm text-gray-300 mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" placeholder="Enter your password"
+                            class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                        <button type="button" onclick="togglePassword(this)"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Forgot password -->
+                <div class="text-right mb-8">
+                    <a href="#" class="text-sm text-[#c8a27a]">Forgot password?</a>
+                </div>
+
+                <!-- Login button -->
+                <a href="profile.html"
+                    class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-6">
+                    Sign In
+                </a>
+
+                <!-- Divider -->
+                <div class="flex items-center gap-4 mb-6">
+                    <hr class="flex-1 border-gray-700" />
+                    <span class="text-xs text-gray-500">or continue with</span>
+                    <hr class="flex-1 border-gray-700" />
+                </div>
+
+                <!-- Social logins -->
+                <div class="flex gap-4 mb-8">
+                    <button
+                        class="flex-1 py-3 border border-gray-700 rounded-xl flex items-center justify-center gap-2 text-sm text-gray-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
+                        </svg>
+                        Google
+                    </button>
+                    <button
+                        class="flex-1 py-3 border border-gray-700 rounded-xl flex items-center justify-center gap-2 text-sm text-gray-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.18 0-.36-.02-.53-.06-.01-.18-.04-.56-.04-.95 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.32.05.65.05 1.02zm4.565 17.63c-.36.83-.78 1.58-1.27 2.28-.7.98-1.26 1.66-1.73 2.04-.69.61-1.43.93-2.23.95-.57 0-1.26-.16-2.07-.49-.81-.33-1.56-.49-2.25-.49-.73 0-1.51.16-2.35.49-.84.33-1.52.5-2.04.52-.77.03-1.53-.3-2.28-.97-.51-.42-1.15-1.14-1.91-2.16-.82-1.1-1.49-2.37-2.01-3.82C.41 15.33.08 13.87.08 12.46c0-1.61.35-3 1.04-4.16.55-.93 1.27-1.66 2.18-2.2.91-.53 1.89-.81 2.95-.83.6 0 1.39.19 2.38.55.98.37 1.61.55 1.89.55.21 0 .91-.22 2.1-.65 1.13-.4 2.08-.57 2.86-.49 2.12.17 3.71 1 4.78 2.5-1.9 1.15-2.84 2.76-2.82 4.83.02 1.61.6 2.95 1.74 4.02.52.49 1.09.87 1.73 1.14-.14.4-.29.79-.45 1.17z" />
+                        </svg>
+                        Apple
+                    </button>
+                </div>
+
+                <!-- Sign up link -->
+                <p class="text-center text-sm text-gray-400">
+                    Don't have an account?
+                    <a href="signup.html" class="text-[#af7b5c] font-semibold">Sign Up</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
+        <p class="opacity-70">Mobile & Tablet only</p>
+    </div>
+
+    <script>
+        function togglePassword(btn) {
+            const input = btn.parentElement.querySelector('input');
+            const icon = btn.querySelector('span');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility_off';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PickBrew App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-black text-white">
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+
+        <!-- Hero image with back & favorite buttons -->
+        <div class="relative shrink-0">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
+                class="w-full h-56 object-cover" />
+            <a href="menu.html"
+                class="absolute top-4 left-4 w-9 h-9 bg-black/50 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[20px]">arrow_back</span>
+            </a>
+            <button
+                class="absolute top-4 right-4 w-9 h-9 bg-black/50 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[20px]">favorite_border</span>
+            </button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-8 flex-1 overflow-y-auto relative z-10">
+            <div class="px-6 pt-6 pb-6">
+
+                <!-- Name & Price -->
+                <div class="flex justify-between items-start mb-1">
+                    <h1 class="text-xl font-semibold">Brewed Coffee</h1>
+                    <span class="text-xl font-semibold">$4.29</span>
+                </div>
+                <p class="text-sm text-gray-400 mb-6">Fresh brewed house blend coffee</p>
+
+                <!-- Size -->
+                <div class="mb-5">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Size</h3>
+                    <div class="flex gap-3">
+                        <button
+                            class="flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">Regular</button>
+                        <button
+                            class="flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Large
+                            (+$0.80)</button>
+                    </div>
+                </div>
+
+                <!-- Strength -->
+                <div class="mb-5">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Strength</h3>
+                    <div class="flex gap-3">
+                        <button
+                            class="flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">Regular</button>
+                        <button
+                            class="flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Extra
+                            Strong</button>
+                    </div>
+                </div>
+
+                <!-- Flavor -->
+                <div class="mb-5">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Flavor</h3>
+                    <div class="flex gap-2 flex-wrap">
+                        <button
+                            class="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">None</button>
+                        <button
+                            class="px-4 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">Vanilla</button>
+                        <button
+                            class="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Caramel</button>
+                        <button
+                            class="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Hazelnut</button>
+                        <button
+                            class="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Mocha</button>
+                    </div>
+                </div>
+
+                <!-- Add-ons -->
+                <div class="mb-5">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Add-ons</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center justify-between">
+                            <span class="text-sm text-gray-300">Whipped Cream</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">+$0.60</span>
+                                <input type="checkbox" checked
+                                    class="w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
+                            </div>
+                        </label>
+                        <label class="flex items-center justify-between">
+                            <span class="text-sm text-gray-300">Extra Shot</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">+$0.80</span>
+                                <input type="checkbox"
+                                    class="w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
+                            </div>
+                        </label>
+                        <label class="flex items-center justify-between">
+                            <span class="text-sm text-gray-300">Oat Milk</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">+$0.70</span>
+                                <input type="checkbox"
+                                    class="w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
+                            </div>
+                        </label>
+                        <label class="flex items-center justify-between">
+                            <span class="text-sm text-gray-300">Caramel Drizzle</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">+$0.50</span>
+                                <input type="checkbox"
+                                    class="w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="mb-4">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Special Instructions</h3>
+                    <textarea rows="2" placeholder="e.g. Extra hot, no sugar..."
+                        class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]"></textarea>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Fixed bottom bar: quantity + add to cart -->
+        <div class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-4">
+                    <button
+                        class="w-8 h-8 rounded-full bg-[#af7b5c] text-black flex items-center justify-center text-lg font-bold">−</button>
+                    <span class="text-lg font-semibold">1</span>
+                    <button
+                        class="w-8 h-8 rounded-full bg-[#af7b5c] text-black flex items-center justify-center text-lg font-bold">+</button>
+                </div>
+                <span class="text-lg font-semibold">$4.89</span>
+            </div>
+            <a href="cart.html"
+                class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
+                Add to Cart
+            </a>
+        </div>
+
+    </div>
+    <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
+        <p class="opacity-70">Mobile & Tablet only</p>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -11,92 +11,115 @@
 </head>
 
 <body class="bg-black text-white">
-    <div class="lg:hidden max-w-md mx-auto min-h-screen bg-black relative">
-        <div class="h-28 bg-[#5a7479] flex items-center justify-center">
-            <h1 class="text-2xl font-semibold">Cart</h1>
-        </div>
-        <!-- <div
-            class="bg-[#121212] rounded-t-[2.5rem] -mt-6 px-6 pt-16 pb-28 min-h-[calc(100vh-5rem)] flex justify-center items-center">
-            <p class="text-center text-[#c8a27a] text-sm leading-relaxed">
-                You don't habe any item in Cart
-            </p>
-        </div> -->
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
 
-        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 px-6 pt-8 pb-40">
-            <div class="mb-6">
-                <div class="flex gap-4">
-                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                        class="w-14 h-14 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-semibold">Brewed Coffee (Regular)</h3>
-                                <p class="text-sm text-gray-400">
-                                    Regular Strength, Vanilla,<br />
-                                    Add Whipped Cream
-                                </p>
-                                <p class="text-sm text-gray-400 mt-1">
-                                    <span class="font-semibold text-gray-300">Note:</span> XYZ
-                                </p>
+        <!-- Header -->
+        <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <h1 class="text-2xl font-semibold text-center">Cart</h1>
+        </div>
+
+        <!-- Scrollable items -->
+        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <div class="px-6 pt-8 pb-4">
+
+                <!-- Item 1 -->
+                <div class="mb-6">
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
+                            class="w-14 h-14 rounded-full object-cover" />
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-semibold">Brewed Coffee (Regular)</h3>
+                                    <p class="text-sm text-gray-400">
+                                        Regular Strength, Vanilla,<br />
+                                        Add Whipped Cream
+                                    </p>
+                                    <p class="text-sm text-gray-400 mt-1">
+                                        <span class="font-semibold text-gray-300">Note:</span> XYZ
+                                    </p>
+                                </div>
+                                <div class="flex gap-3 text-[#c8a27a]">
+                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">edit</span>
+                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">favorite</span>
+                                </div>
                             </div>
-                            <div class="flex gap-3 text-[#c8a27a]">
-                                <span class="material-symbols-outlined cursor-pointer">edit</span>
-                                <span class="material-symbols-outlined cursor-pointer">favorite</span>
+                            <div class="flex justify-between items-center mt-4">
+                                <div class="flex items-center gap-3">
+                                    <button
+                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">−</button>
+                                    <span class="text-sm font-medium">1</span>
+                                    <button
+                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">+</button>
+                                </div>
+                                <span class="font-semibold">$6.69</span>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex items-center gap-3">
-                                <button
-                                    class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">−</button>
-                                <span>1</span>
-                                <button
-                                    class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">+</button>
+                    </div>
+                    <hr class="border-gray-700 mt-6" />
+                </div>
+
+                <!-- Item 2 -->
+                <div class="mb-6">
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+                            class="w-14 h-14 rounded-full object-cover" />
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-semibold">Bagel and Cream Cheese</h3>
+                                    <p class="text-sm text-gray-400">
+                                        Regular Strength, Vanilla,<br />
+                                        Add Whipped Cream
+                                    </p>
+                                    <p class="text-sm text-gray-400 mt-1">
+                                        <span class="font-semibold text-gray-300">Note:</span> Testing
+                                    </p>
+                                </div>
+                                <div class="flex gap-3 text-[#c8a27a]">
+                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">edit</span>
+                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">favorite</span>
+                                </div>
                             </div>
-                            <span class="font-semibold">$6.69</span>
+                            <div class="flex justify-between items-center mt-4">
+                                <div class="flex items-center gap-3">
+                                    <button
+                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">−</button>
+                                    <span class="text-sm font-medium">1</span>
+                                    <button
+                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">+</button>
+                                </div>
+                                <span class="font-semibold">$3.60</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <hr class="border-gray-700 mt-6" />
-            </div>
-            <div class="mb-6">
-                <div class="flex gap-4">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                        class="w-14 h-14 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-semibold">Bagel and Cream Cheese</h3>
-                                <p class="text-sm text-gray-400">
-                                    Regular Strength, Vanilla,<br />
-                                    Add Whipped Cream
-                                </p>
-                                <p class="text-sm text-gray-400 mt-1">
-                                    <span class="font-semibold text-gray-300">Note:</span> Testing
-                                </p>
-                            </div>
-                            <div class="flex gap-3 text-[#c8a27a]">
-                                <span class="material-symbols-outlined cursor-pointer">edit</span>
-                                <span class="material-symbols-outlined cursor-pointer">favorite</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex items-center gap-3">
-                                <button
-                                    class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">−</button>
-                                <span>1</span>
-                                <button
-                                    class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">+</button>
-                            </div>
-                            <span class="font-semibold">$3.60</span>
-                        </div>
-                    </div>
-                </div>
-                <hr class="border-gray-700 mt-6" />
+
             </div>
         </div>
 
-        <div
-            class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-black border-t border-gray-800 flex justify-around py-3">
+        <!-- Order summary + checkout -->
+        <div class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4">
+            <div class="flex justify-between text-sm text-gray-400 mb-2">
+                <span>Subtotal</span>
+                <span>$10.29</span>
+            </div>
+            <div class="flex justify-between text-sm text-gray-400 mb-3">
+                <span>Tax</span>
+                <span>$0.82</span>
+            </div>
+            <div class="flex justify-between font-semibold mb-4">
+                <span>Total</span>
+                <span>$11.11</span>
+            </div>
+            <a href="#"
+                class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
+                Checkout — $11.11
+            </a>
+        </div>
+
+        <!-- Bottom nav -->
+        <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
             </a>
@@ -108,7 +131,7 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="absolute -top-1 -right-2 bg-[#fff] text-xs rounded-full px-1">4</span>
+                <span class="absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1">4</span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>

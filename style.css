@@ -1,13 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Hide scrollbars but keep scrolling */
+.overflow-y-auto,
+.overflow-x-auto {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Nav items */
 .nav-item {
   border-radius: 50%;
   width: 40px;
@@ -15,8 +22,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
 }
 .nav-item.active {
   background-color: #af7b5c;
   color: black;
+}
+
+/* Category tab transition */
+.cat-tab {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Links inside dark areas shouldn't be blue */
+a {
+  color: inherit;
+  text-decoration: none;
 }
