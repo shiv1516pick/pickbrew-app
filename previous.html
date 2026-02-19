@@ -19,18 +19,8 @@
         </div>
 
         <!-- Content -->
-        <div
-            class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto flex justify-center items-center">
-            <div class="text-center px-6">
-                <span class="material-symbols-outlined text-[48px] text-gray-600 mb-3 block">receipt_long</span>
-                <p class="text-[#c8a27a] text-sm leading-relaxed">
-                    You don't have any previous orders yet
-                </p>
-                <a href="menu.html"
-                    class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">
-                    Start Ordering
-                </a>
-            </div>
+        <div id="orders-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <!-- Rendered by JS -->
         </div>
 
         <!-- Bottom nav -->
@@ -46,7 +36,7 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1">4</span>
+                <span class="cart-badge absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1"></span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>
@@ -56,7 +46,77 @@
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
+    <script src="app.js"></script>
     <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var orders = PickBrew.getOrders();
+            var area = document.getElementById("orders-area");
+
+            if (orders.length === 0) {
+                area.className = "bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto flex justify-center items-center";
+                area.innerHTML = '<div class="text-center px-6">' +
+                    '<span class="material-symbols-outlined text-[48px] text-gray-600 mb-3 block">receipt_long</span>' +
+                    '<p class="text-[#c8a27a] text-sm leading-relaxed">You don\'t have any previous orders yet</p>' +
+                    '<a href="menu.html" class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">Start Ordering</a>' +
+                    '</div>';
+                return;
+            }
+
+            var html = '<div class="px-6 pt-8 pb-4">';
+            orders.forEach(function (order) {
+                var d = new Date(order.date);
+                var dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+                var timeStr = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+                var itemCount = 0;
+                order.items.forEach(function (it) { itemCount += it.qty; });
+
+                html += '<div class="mb-5 bg-[#1e1e1e] rounded-2xl p-4">' +
+                    '<div class="flex justify-between items-center mb-3">' +
+                    '<div>' +
+                    '<p class="text-sm font-semibold">' + order.id + '</p>' +
+                    '<p class="text-xs text-gray-400">' + dateStr + ' at ' + timeStr + '</p>' +
+                    '</div>' +
+                    '<span class="text-xs px-2 py-0.5 rounded-full bg-green-900 text-green-300">Completed</span>' +
+                    '</div>';
+
+                // Item thumbnails row
+                html += '<div class="flex gap-2 mb-3 overflow-x-auto">';
+                order.items.forEach(function (it) {
+                    html += '<img src="' + it.image + '" class="w-10 h-10 rounded-full object-cover shrink-0" title="' + it.name + '" />';
+                });
+                html += '</div>';
+
+                // Items summary
+                html += '<div class="space-y-1 mb-3">';
+                order.items.forEach(function (it) {
+                    html += '<div class="flex justify-between text-sm">' +
+                        '<span class="text-gray-300">' + it.qty + 'x ' + it.name + '</span>' +
+                        '<span class="text-gray-400">$' + (it.price * it.qty).toFixed(2) + '</span>' +
+                        '</div>';
+                });
+                html += '</div>';
+
+                html += '<hr class="border-gray-700 mb-3" />' +
+                    '<div class="flex justify-between items-center">' +
+                    '<span class="text-sm font-semibold">Total: $' + order.total.toFixed(2) + '</span>' +
+                    '<button class="reorder-btn px-4 py-1.5 bg-[#af7b5c] text-black text-xs font-semibold rounded-full" data-order=\'' + JSON.stringify(order.items) + '\'>Reorder</button>' +
+                    '</div>' +
+                    '</div>';
+            });
+            html += '</div>';
+            area.innerHTML = html;
+
+            // Reorder buttons
+            area.querySelectorAll(".reorder-btn").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var items = JSON.parse(btn.dataset.order);
+                    items.forEach(function (it) { PickBrew.addToCart(it); });
+                    PickBrew.showToast("Items added to cart!");
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

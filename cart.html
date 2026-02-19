@@ -19,103 +19,28 @@
         </div>
 
         <!-- Scrollable items -->
-        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
-            <div class="px-6 pt-8 pb-4">
-
-                <!-- Item 1 -->
-                <div class="mb-6">
-                    <div class="flex gap-4">
-                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                            class="w-14 h-14 rounded-full object-cover" />
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-semibold">Brewed Coffee (Regular)</h3>
-                                    <p class="text-sm text-gray-400">
-                                        Regular Strength, Vanilla,<br />
-                                        Add Whipped Cream
-                                    </p>
-                                    <p class="text-sm text-gray-400 mt-1">
-                                        <span class="font-semibold text-gray-300">Note:</span> XYZ
-                                    </p>
-                                </div>
-                                <div class="flex gap-3 text-[#c8a27a]">
-                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">edit</span>
-                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">favorite</span>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="flex items-center gap-3">
-                                    <button
-                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">−</button>
-                                    <span class="text-sm font-medium">1</span>
-                                    <button
-                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">+</button>
-                                </div>
-                                <span class="font-semibold">$6.69</span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="border-gray-700 mt-6" />
-                </div>
-
-                <!-- Item 2 -->
-                <div class="mb-6">
-                    <div class="flex gap-4">
-                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                            class="w-14 h-14 rounded-full object-cover" />
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-semibold">Bagel and Cream Cheese</h3>
-                                    <p class="text-sm text-gray-400">
-                                        Regular Strength, Vanilla,<br />
-                                        Add Whipped Cream
-                                    </p>
-                                    <p class="text-sm text-gray-400 mt-1">
-                                        <span class="font-semibold text-gray-300">Note:</span> Testing
-                                    </p>
-                                </div>
-                                <div class="flex gap-3 text-[#c8a27a]">
-                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">edit</span>
-                                    <span class="material-symbols-outlined cursor-pointer text-[20px]">favorite</span>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="flex items-center gap-3">
-                                    <button
-                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">−</button>
-                                    <span class="text-sm font-medium">1</span>
-                                    <button
-                                        class="w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold">+</button>
-                                </div>
-                                <span class="font-semibold">$3.60</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div id="cart-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <!-- Rendered by JS -->
         </div>
 
-        <!-- Order summary + checkout -->
-        <div class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4">
+        <!-- Order summary -->
+        <div id="checkout-bar" class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4" style="display:none;">
             <div class="flex justify-between text-sm text-gray-400 mb-2">
                 <span>Subtotal</span>
-                <span>$10.29</span>
+                <span id="subtotal">$0.00</span>
             </div>
             <div class="flex justify-between text-sm text-gray-400 mb-3">
-                <span>Tax</span>
-                <span>$0.82</span>
+                <span>Tax (8%)</span>
+                <span id="tax">$0.00</span>
             </div>
             <div class="flex justify-between font-semibold mb-4">
                 <span>Total</span>
-                <span>$11.11</span>
+                <span id="total">$0.00</span>
             </div>
-            <a href="#"
-                class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
-                Checkout — $11.11
-            </a>
+            <button id="checkout-btn"
+                class="w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
+                Checkout
+            </button>
         </div>
 
         <!-- Bottom nav -->
@@ -131,7 +56,7 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1">4</span>
+                <span class="cart-badge absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1"></span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>
@@ -141,7 +66,131 @@
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
+    <script src="app.js"></script>
     <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function renderCart() {
+                var cart = PickBrew.getCart();
+                var area = document.getElementById("cart-area");
+                var checkout = document.getElementById("checkout-bar");
+
+                if (cart.length === 0) {
+                    checkout.style.display = "none";
+                    area.innerHTML = '<div class="flex flex-col justify-center items-center h-full px-6">' +
+                        '<span class="material-symbols-outlined text-[48px] text-gray-600 mb-3">shopping_cart</span>' +
+                        '<p class="text-[#c8a27a] text-sm text-center leading-relaxed">Your cart is empty</p>' +
+                        '<a href="menu.html" class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">Browse Menu</a>' +
+                        '</div>';
+                    return;
+                }
+
+                checkout.style.display = "";
+                var html = '<div class="px-6 pt-8 pb-4">';
+                cart.forEach(function (item, i) {
+                    var details = [];
+                    if (item.size) details.push(item.size);
+                    if (item.strength) details.push(item.strength + " Strength");
+                    if (item.flavor && item.flavor !== "None") details.push(item.flavor);
+                    if (item.addons && item.addons.length) details.push(item.addons.join(", "));
+                    var detailStr = details.join(", ");
+
+                    html += '<div class="mb-6">' +
+                        '<div class="flex gap-4">' +
+                        '<img src="' + item.image + '" class="w-14 h-14 rounded-full object-cover" />' +
+                        '<div class="flex-1">' +
+                        '<div class="flex justify-between items-start">' +
+                        '<div>' +
+                        '<h3 class="font-semibold">' + item.name + '</h3>' +
+                        '<p class="text-sm text-gray-400">' + detailStr + '</p>' +
+                        (item.note ? '<p class="text-sm text-gray-400 mt-1"><span class="font-semibold text-gray-300">Note:</span> ' + item.note + '</p>' : '') +
+                        '</div>' +
+                        '<div class="flex gap-3 text-[#c8a27a]">' +
+                        '<span class="material-symbols-outlined cursor-pointer text-[20px] fav-cart-btn" data-index="' + i + '">favorite</span>' +
+                        '<span class="material-symbols-outlined cursor-pointer text-[20px] remove-btn" data-index="' + i + '">delete</span>' +
+                        '</div></div>' +
+                        '<div class="flex justify-between items-center mt-4">' +
+                        '<div class="flex items-center gap-3">' +
+                        '<button class="qty-dec w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold" data-index="' + i + '">−</button>' +
+                        '<span class="text-sm font-medium">' + item.qty + '</span>' +
+                        '<button class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold" data-index="' + i + '">+</button>' +
+                        '</div>' +
+                        '<span class="font-semibold">$' + (item.price * item.qty).toFixed(2) + '</span>' +
+                        '</div></div></div>' +
+                        (i < cart.length - 1 ? '<hr class="border-gray-700 mt-6" />' : '') +
+                        '</div>';
+                });
+                html += '</div>';
+                area.innerHTML = html;
+
+                // Totals
+                var subtotal = PickBrew.getCartTotal();
+                var tax = subtotal * 0.08;
+                var total = subtotal + tax;
+                document.getElementById("subtotal").textContent = "$" + subtotal.toFixed(2);
+                document.getElementById("tax").textContent = "$" + tax.toFixed(2);
+                document.getElementById("total").textContent = "$" + total.toFixed(2);
+                document.getElementById("checkout-btn").textContent = "Checkout — $" + total.toFixed(2);
+
+                // Bind events
+                area.querySelectorAll(".qty-dec").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        PickBrew.updateQty(parseInt(btn.dataset.index), -1);
+                        renderCart();
+                    });
+                });
+                area.querySelectorAll(".qty-inc").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        PickBrew.updateQty(parseInt(btn.dataset.index), 1);
+                        renderCart();
+                    });
+                });
+                area.querySelectorAll(".remove-btn").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        var c = PickBrew.getCart();
+                        PickBrew.showToast(c[parseInt(btn.dataset.index)].name + " removed");
+                        PickBrew.removeFromCart(parseInt(btn.dataset.index));
+                        renderCart();
+                    });
+                });
+                area.querySelectorAll(".fav-cart-btn").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        var c = PickBrew.getCart();
+                        var item = c[parseInt(btn.dataset.index)];
+                        PickBrew.toggleFavorite({ id: item.id, name: item.name, price: item.price, image: item.image, desc: item.desc || "" });
+                        PickBrew.showToast(PickBrew.isFavorite(item.id) ? "Added to favorites" : "Removed from favorites");
+                    });
+                });
+            }
+
+            document.getElementById("checkout-btn").addEventListener("click", function () {
+                var cart = PickBrew.getCart();
+                if (cart.length === 0) return;
+                var subtotal = PickBrew.getCartTotal();
+                var tax = subtotal * 0.08;
+                var total = subtotal + tax;
+                // Save order to history
+                PickBrew.saveOrder(cart, total);
+                // Clear cart
+                localStorage.removeItem("pb_cart");
+                PickBrew.updateBadge();
+                // Show confirmation
+                var area = document.getElementById("cart-area");
+                var checkout = document.getElementById("checkout-bar");
+                checkout.style.display = "none";
+                area.innerHTML = '<div class="flex flex-col justify-center items-center h-full px-6">' +
+                    '<span class="material-symbols-outlined text-[56px] text-[#af7b5c] mb-4">check_circle</span>' +
+                    '<h2 class="text-lg font-semibold mb-1">Order Placed!</h2>' +
+                    '<p class="text-sm text-gray-400 text-center mb-2">Your order of $' + total.toFixed(2) + ' has been confirmed.</p>' +
+                    '<p class="text-xs text-gray-500 mb-6">Estimated pickup: 10–15 mins</p>' +
+                    '<a href="previous.html" class="inline-block px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full mb-3">View Orders</a>' +
+                    '<a href="menu.html" class="inline-block px-6 py-2 border border-gray-600 text-gray-300 text-sm font-medium rounded-full">Continue Shopping</a>' +
+                    '</div>';
+            });
+
+            renderCart();
+        });
+    </script>
 </body>
 
 </html>

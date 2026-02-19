@@ -19,18 +19,8 @@
         </div>
 
         <!-- Content -->
-        <div
-            class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto flex justify-center items-center">
-            <div class="text-center px-6">
-                <span class="material-symbols-outlined text-[48px] text-gray-600 mb-3 block">favorite_border</span>
-                <p class="text-[#c8a27a] text-sm leading-relaxed">
-                    You don't have any favorite items yet
-                </p>
-                <a href="menu.html"
-                    class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">
-                    Browse Menu
-                </a>
-            </div>
+        <div id="fav-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <!-- Rendered by JS -->
         </div>
 
         <!-- Bottom nav -->
@@ -46,7 +36,7 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1">4</span>
+                <span class="cart-badge absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1"></span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>
@@ -56,7 +46,80 @@
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
+    <script src="app.js"></script>
     <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function renderFavs() {
+                var favs = PickBrew.getFavorites();
+                var area = document.getElementById("fav-area");
+
+                if (favs.length === 0) {
+                    area.innerHTML = '<div class="flex flex-col justify-center items-center h-full px-6">' +
+                        '<span class="material-symbols-outlined text-[48px] text-gray-600 mb-3">favorite_border</span>' +
+                        '<p class="text-[#c8a27a] text-sm text-center leading-relaxed">You don\'t have any favorite items yet</p>' +
+                        '<a href="menu.html" class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">Browse Menu</a>' +
+                        '</div>';
+                    return;
+                }
+
+                var html = '<div class="px-6 pt-8 pb-4">';
+                favs.forEach(function (item) {
+                    html += '<div class="mb-6">' +
+                        '<div class="flex gap-4 items-center">' +
+                        '<a href="product.html?id=' + item.id + '">' +
+                        '<img src="' + item.image + '" class="w-14 h-14 rounded-full object-cover" />' +
+                        '</a>' +
+                        '<div class="flex-1">' +
+                        '<a href="product.html?id=' + item.id + '">' +
+                        '<h3 class="font-semibold">' + item.name + '</h3>' +
+                        '<p class="text-sm text-gray-400">' + (item.desc || '') + '</p>' +
+                        '</a>' +
+                        '</div>' +
+                        '<div class="flex gap-3 items-center">' +
+                        '<span class="font-semibold text-sm">$' + item.price.toFixed(2) + '</span>' +
+                        '<button class="add-fav-cart w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center" data-id="' + item.id + '" data-name="' + item.name + '" data-price="' + item.price + '" data-image="' + item.image + '" data-desc="' + (item.desc || '') + '">' +
+                        '<span class="material-symbols-outlined text-[18px]">add</span>' +
+                        '</button>' +
+                        '<button class="remove-fav text-red-400" data-id="' + item.id + '">' +
+                        '<span class="material-symbols-outlined text-[20px]">close</span>' +
+                        '</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '<hr class="border-gray-700 mt-4" />' +
+                        '</div>';
+                });
+                html += '</div>';
+                area.innerHTML = html;
+
+                // Bind remove
+                area.querySelectorAll(".remove-fav").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        PickBrew.removeFavorite(btn.dataset.id);
+                        PickBrew.showToast("Removed from favorites");
+                        renderFavs();
+                    });
+                });
+
+                // Bind add to cart
+                area.querySelectorAll(".add-fav-cart").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        PickBrew.addToCart({
+                            id: btn.dataset.id,
+                            name: btn.dataset.name,
+                            price: parseFloat(btn.dataset.price),
+                            image: btn.dataset.image,
+                            desc: btn.dataset.desc,
+                            size: "Regular", strength: "Regular", flavor: "None", addons: [], note: "", qty: 1
+                        });
+                        PickBrew.showToast(btn.dataset.name + " added to cart");
+                    });
+                });
+            }
+
+            renderFavs();
+        });
+    </script>
 </body>
 
 </html>
