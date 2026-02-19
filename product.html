@@ -33,12 +33,27 @@
                 <p id="product-desc" class="text-sm text-gray-400 mb-6">Fresh brewed house blend coffee</p>
                 <div class="mb-5">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Size</h3>
-                    <div class="flex gap-3 option-group" data-option="size">
-                        <button data-value="Regular" data-extra="0"
-                            class="opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">Regular</button>
-                        <button data-value="Large" data-extra="0.80"
-                            class="opt-btn flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Large
-                            (+$0.80)</button>
+                    <div class="grid grid-cols-4 gap-2 option-group" data-option="size">
+                        <button data-value="Small" data-extra="0"
+                            class="opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300">
+                            <div class="text-base font-bold leading-tight">S</div>
+                            <div class="text-[10px]">8 oz</div>
+                        </button>
+                        <button data-value="Medium" data-extra="0.50"
+                            class="opt-btn size-card py-3 rounded-xl text-center bg-[#af7b5c] text-black">
+                            <div class="text-base font-bold leading-tight">M</div>
+                            <div class="text-[10px]">12 oz</div>
+                        </button>
+                        <button data-value="Large" data-extra="1.00"
+                            class="opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300">
+                            <div class="text-base font-bold leading-tight">L</div>
+                            <div class="text-[10px]">16 oz</div>
+                        </button>
+                        <button data-value="Extra Large" data-extra="1.50"
+                            class="opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300">
+                            <div class="text-base font-bold leading-tight">XL</div>
+                            <div class="text-[10px]">20 oz</div>
+                        </button>
                     </div>
                 </div>
                 <div class="mb-5">
@@ -140,12 +155,12 @@
                 "brewed-coffee": { name: "Brewed Coffee", price: 4.29, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", desc: "Fresh brewed house blend coffee" },
                 "vanilla-cold-brew": { name: "Vanilla Cold Brew", price: 4.79, image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735", desc: "Slow-steeped cold brew with vanilla" },
                 "espresso-shot": { name: "Espresso Shot", price: 3.29, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Single or double shot" },
-                "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefda", desc: "Espresso with hot water" },
+                "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1551030173-122aabc4489c", desc: "Espresso with hot water" },
                 "caramel-latte": { name: "Caramel Latte", price: 5.49, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", desc: "Espresso with steamed milk & caramel" },
                 "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Double shot with foamed milk" },
                 "iced-mocha": { name: "Iced Mocha", price: 5.99, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d", desc: "Chilled espresso with chocolate & milk" },
                 "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese" },
-                "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1555507036-ab1f4038024a", desc: "Freshly baked flaky croissant" }
+                "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd", desc: "Freshly baked flaky croissant" }
             };
             var params = new URLSearchParams(window.location.search);
             var pid = params.get("id") || "brewed-coffee";
@@ -155,12 +170,14 @@
             document.getElementById("product-desc").textContent = product.desc;
             document.getElementById("base-price-display").textContent = "$" + product.price.toFixed(2);
             document.title = product.name + " — PickBrew";
-            var state = { size: "Regular", strength: "Regular", flavor: "None", addons: [], qty: 1 };
+            var state = { size: "Medium", strength: "Regular", flavor: "None", addons: [], qty: 1 };
             var basePrice = product.price;
             var ACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
             var INACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300";
             var ACTIVE_PILL = "opt-btn px-4 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
             var INACTIVE_PILL = "opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300";
+            var ACTIVE_SIZE = "opt-btn size-card py-3 rounded-xl text-center bg-[#af7b5c] text-black";
+            var INACTIVE_SIZE = "opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300";
 
             function calcPrice() {
                 var extra = 0;
@@ -178,11 +195,16 @@
             document.querySelectorAll(".option-group").forEach(function (group) {
                 group.querySelectorAll(".opt-btn").forEach(function (btn) {
                     btn.addEventListener("click", function () {
-                        var isPill = !btn.classList.contains("flex-1");
+                        var isSizeCard = btn.classList.contains("size-card");
+                        var isFlexBtn = btn.classList.contains("flex-1");
                         group.querySelectorAll(".opt-btn").forEach(function (b) {
-                            b.className = b.classList.contains("flex-1") ? INACTIVE : INACTIVE_PILL;
+                            if (b.classList.contains("size-card")) b.className = INACTIVE_SIZE;
+                            else if (b.classList.contains("flex-1")) b.className = INACTIVE;
+                            else b.className = INACTIVE_PILL;
                         });
-                        btn.className = isPill ? ACTIVE_PILL : ACTIVE;
+                        if (isSizeCard) btn.className = ACTIVE_SIZE;
+                        else if (isFlexBtn) btn.className = ACTIVE;
+                        else btn.className = ACTIVE_PILL;
                         state[group.dataset.option] = btn.dataset.value;
                         calcPrice();
                     });

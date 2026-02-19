@@ -117,12 +117,12 @@ var PickBrew = (function () {
   function quickAdd(id, name, price, image, desc) {
     var cart = getCart();
     var existing = cart.find(function (c) {
-      return c.id === id && c.size === "Regular" && c.strength === "Regular" && c.flavor === "None" && c.addons.length === 0;
+      return c.id === id && c.size === "Medium" && c.strength === "Regular" && c.flavor === "None" && c.addons.length === 0;
     });
     if (existing) {
       existing.qty += 1;
     } else {
-      cart.push({ id: id, name: name, price: price, image: image, desc: desc, size: "Regular", strength: "Regular", flavor: "None", addons: [], note: "", qty: 1 });
+      cart.push({ id: id, name: name, price: price, image: image, desc: desc, size: "Medium", strength: "Regular", flavor: "None", addons: [], note: "", qty: 1 });
     }
     saveCart(cart);
     return getCartQtyById(id);
@@ -132,7 +132,7 @@ var PickBrew = (function () {
     // find the default-options entry first
     var idx = -1;
     for (var i = 0; i < cart.length; i++) {
-      if (cart[i].id === id && cart[i].size === "Regular" && cart[i].strength === "Regular" && cart[i].flavor === "None" && cart[i].addons.length === 0) {
+      if (cart[i].id === id && cart[i].size === "Medium" && cart[i].strength === "Regular" && cart[i].flavor === "None" && cart[i].addons.length === 0) {
         idx = i;
         break;
       }
