@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let currentPage = window.location.pathname.split("/").pop();
-  if (currentPage === "" || currentPage === "/index.html") {
+  if (currentPage === "/" || currentPage === "/index.html") {
     currentPage = "index.html";
   }
   const navItems = document.querySelectorAll(".nav-item");
