@@ -167,6 +167,26 @@ var PickBrew = (function () {
     return orders;
   }
 
+  // ---- user / auth ----
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem("pb_user")) || null; } catch (e) { return null; }
+  }
+  function saveUser(user) {
+    localStorage.setItem("pb_user", JSON.stringify(user));
+  }
+  function logout() {
+    localStorage.removeItem("pb_user");
+  }
+  function isLoggedIn() {
+    return !!getUser();
+  }
+  function getPref(key) {
+    try { var p = JSON.parse(localStorage.getItem("pb_prefs")) || {}; return p[key]; } catch (e) { return undefined; }
+  }
+  function setPref(key, val) {
+    try { var p = JSON.parse(localStorage.getItem("pb_prefs")) || {}; p[key] = val; localStorage.setItem("pb_prefs", JSON.stringify(p)); } catch (e) { /* noop */ }
+  }
+
   // ---- badge ----
   function updateBadge() {
     var count = getCartCount();
@@ -220,6 +240,12 @@ var PickBrew = (function () {
     quickRemove: quickRemove,
     getOrders: getOrders,
     saveOrder: saveOrder,
+    getUser: getUser,
+    saveUser: saveUser,
+    logout: logout,
+    isLoggedIn: isLoggedIn,
+    getPref: getPref,
+    setPref: setPref,
     updateBadge: updateBadge,
     showToast: showToast,
   };

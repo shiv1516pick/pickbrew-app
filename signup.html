@@ -23,23 +23,23 @@
                 <p class="text-sm text-gray-400 mb-8">Sign up to get started</p>
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Full Name</label>
-                    <input type="text" placeholder="John Doe"
+                    <input id="su-name" type="text" placeholder="John Doe"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Email</label>
-                    <input type="email" placeholder="you@example.com"
+                    <input id="su-email" type="email" placeholder="you@example.com"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Phone Number</label>
-                    <input type="tel" placeholder="+1 (555) 000-0000"
+                    <input id="su-phone" type="tel" placeholder="+1 (555) 000-0000"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Password</label>
                     <div class="relative">
-                        <input type="password" placeholder="At least 8 characters"
+                        <input id="su-pass" type="password" placeholder="At least 8 characters"
                             class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                         <button type="button" onclick="togglePassword(this)"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -50,7 +50,7 @@
                 <div class="mb-6">
                     <label class="block text-sm text-gray-300 mb-2">Confirm Password</label>
                     <div class="relative">
-                        <input type="password" placeholder="Re-enter your password"
+                        <input id="su-confirm" type="password" placeholder="Re-enter your password"
                             class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                         <button type="button" onclick="togglePassword(this)"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -59,17 +59,18 @@
                     </div>
                 </div>
                 <label class="flex items-start gap-3 mb-8">
-                    <input type="checkbox"
+                    <input id="su-terms" type="checkbox"
                         class="mt-0.5 w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
                     <span class="text-xs text-gray-400 leading-relaxed">
                         I agree to the <a href="#" class="text-[#c8a27a] underline">Terms of Service</a> and
                         <a href="#" class="text-[#c8a27a] underline">Privacy Policy</a>
                     </span>
                 </label>
-                <a href="profile.html"
-                    class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-6">
+                <p id="su-error" class="text-red-400 text-xs mb-3" style="display:none;"></p>
+                <button id="su-btn"
+                    class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-6 cursor-pointer">
                     Create Account
-                </a>
+                </button>
                 <div class="flex items-center gap-4 mb-6">
                     <hr class="flex-1 border-gray-700" />
                     <span class="text-xs text-gray-500">or sign up with</span>
@@ -113,10 +114,11 @@
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
+    <script src="app.js"></script>
     <script>
         function togglePassword(btn) {
-            const input = btn.parentElement.querySelector('input');
-            const icon = btn.querySelector('span');
+            var input = btn.parentElement.querySelector('input');
+            var icon = btn.querySelector('span');
             if (input.type === 'password') {
                 input.type = 'text';
                 icon.textContent = 'visibility';
@@ -125,6 +127,26 @@
                 icon.textContent = 'visibility_off';
             }
         }
+        document.getElementById("su-btn").addEventListener("click", function () {
+            var name = document.getElementById("su-name").value.trim();
+            var email = document.getElementById("su-email").value.trim();
+            var phone = document.getElementById("su-phone").value.trim();
+            var pass = document.getElementById("su-pass").value;
+            var confirm = document.getElementById("su-confirm").value;
+            var terms = document.getElementById("su-terms").checked;
+            var err = document.getElementById("su-error");
+            err.style.display = "none";
+
+            if (!name) { err.textContent = "Please enter your full name"; err.style.display = ""; return; }
+            if (!email || email.indexOf("@") === -1) { err.textContent = "Please enter a valid email"; err.style.display = ""; return; }
+            if (pass.length < 8) { err.textContent = "Password must be at least 8 characters"; err.style.display = ""; return; }
+            if (pass !== confirm) { err.textContent = "Passwords do not match"; err.style.display = ""; return; }
+            if (!terms) { err.textContent = "Please agree to the Terms of Service"; err.style.display = ""; return; }
+
+            PickBrew.saveUser({ name: name, email: email, phone: phone, password: pass, joined: new Date().toISOString() });
+            PickBrew.showToast("Account created!");
+            setTimeout(function () { window.location.href = "profile.html"; }, 600);
+        });
     </script>
 </body>
 
