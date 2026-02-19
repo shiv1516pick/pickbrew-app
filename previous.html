@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PickBrew App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-black text-white">
+    <div class="lg:hidden max-w-md mx-auto min-h-screen bg-black relative">
+        <div class="h-20 bg-[#5a7479] flex items-center justify-center">
+            <h1 class="text-lg font-semibold">Menu</h1>
+        </div>
+        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 px-6 pt-16 pb-28 min-h-[calc(100vh-5rem)]">
+            <p class="text-center text-[#c8a27a] text-sm leading-relaxed">
+                Tap the heart on your favorite items from the cart page after adding to cart
+            </p>
+        </div>
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-black border-t border-gray-800 flex justify-around py-3">
+            <a href="index.html" class="nav-item">
+                <span class="material-symbols-outlined">local_cafe</span>
+            </a>
+            <a href="menu.html" class="nav-item">
+                <span class="material-symbols-outlined">menu_book_2</span>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <span class="material-symbols-outlined">favorite</span>
+            </a>
+            <a href="cart.html" class="nav-item relative">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                 <span class="absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1">4</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="material-symbols-outlined">account_circle</span>
+            </a>
+        </div>
+    </div>
+    <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
+        <p class="opacity-70">Mobile & Tablet only</p>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

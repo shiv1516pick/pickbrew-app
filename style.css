@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont;
+}
+.nav-item {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-item.active {
+  background-color: #af7b5c;
+  color: black;
+}
