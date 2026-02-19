@@ -12,8 +12,6 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-
-        <!-- Header with breadcrumb -->
         <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
             <div class="flex items-center gap-1.5 px-5 mb-2">
                 <a href="index.html" class="text-sm opacity-70">Home</a>
@@ -22,7 +20,6 @@
             </div>
             <h1 id="page-title" class="text-2xl font-semibold text-center">Menu</h1>
         </div>
-
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 flex flex-col overflow-hidden">
             <div class="shrink-0 px-5 pt-5 pb-3">
                 <div class="flex gap-2 overflow-x-auto">
@@ -39,14 +36,9 @@
                         class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Food</button>
                 </div>
             </div>
-
-            <!-- Scrollable items -->
             <div class="px-6 pb-4 flex-1 overflow-y-auto">
-
-                <!-- Coffee section -->
                 <div data-section="coffee" class="menu-section">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Coffee</h3>
-
                     <div class="menu-item block mb-6" data-id="brewed-coffee" data-name="Brewed Coffee"
                         data-price="4.29" data-image="https://images.unsplash.com/photo-1511920170033-f8396924c348"
                         data-desc="Fresh brewed house blend">
@@ -115,11 +107,8 @@
                         <hr class="border-gray-700 mt-6" />
                     </div>
                 </div>
-
-                <!-- Espresso section -->
                 <div data-section="espresso" class="menu-section">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Espresso</h3>
-
                     <div class="menu-item block mb-6" data-id="espresso-shot" data-name="Espresso Shot"
                         data-price="3.29" data-image="https://images.unsplash.com/photo-1521305916504-4a1121188589"
                         data-desc="Single or double shot">
@@ -153,7 +142,6 @@
                         </a>
                         <hr class="border-gray-700 mt-6" />
                     </div>
-
                     <div class="menu-item block mb-6" data-id="americano" data-name="Americano" data-price="3.99"
                         data-image="https://images.unsplash.com/photo-1514432324607-a09d9b4aefda"
                         data-desc="Espresso with hot water">
@@ -188,11 +176,8 @@
                         <hr class="border-gray-700 mt-6" />
                     </div>
                 </div>
-
-                <!-- Espresso Drinks section -->
                 <div data-section="espresso-drinks" class="menu-section">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Espresso Drinks</h3>
-
                     <div class="menu-item block mb-6" data-id="caramel-latte" data-name="Caramel Latte"
                         data-price="5.49" data-image="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
                         data-desc="Espresso with steamed milk & caramel">
@@ -226,7 +211,6 @@
                         </a>
                         <hr class="border-gray-700 mt-6" />
                     </div>
-
                     <div class="menu-item block mb-6" data-id="cappuccino" data-name="Cappuccino" data-price="5.19"
                         data-image="https://images.unsplash.com/photo-1521305916504-4a1121188589"
                         data-desc="Double shot with foamed milk">
@@ -260,7 +244,6 @@
                         </a>
                         <hr class="border-gray-700 mt-6" />
                     </div>
-
                     <div class="menu-item block mb-6" data-id="iced-mocha" data-name="Iced Mocha" data-price="5.99"
                         data-image="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
                         data-desc="Chilled espresso with chocolate & milk">
@@ -295,8 +278,6 @@
                         <hr class="border-gray-700 mt-6" />
                     </div>
                 </div>
-
-                <!-- Food section -->
                 <div data-section="food" class="menu-section">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Food</h3>
 
@@ -371,7 +352,6 @@
             </div>
         </div>
 
-        <!-- Bottom nav -->
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
@@ -398,7 +378,6 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Category filter
             var categoryNames = { all: "Menu", coffee: "Coffee", espresso: "Espresso", "espresso-drinks": "Espresso Drinks", food: "Food" };
             var tabs = document.querySelectorAll(".cat-tab");
             var sections = document.querySelectorAll(".menu-section");
@@ -424,7 +403,6 @@
             var hash = window.location.hash.replace("#", "");
             if (hash && categoryNames[hash]) setCategory(hash);
 
-            // ---- Sync counters & favorites with cart state ----
             function syncUI() {
                 document.querySelectorAll(".menu-item").forEach(function (item) {
                     var id = item.dataset.id;
@@ -440,7 +418,6 @@
                         count.style.display = "none";
                         count.textContent = "0";
                     }
-                    // fav icon
                     var favBtn = item.querySelector(".fav-btn");
                     var favIcon = favBtn.querySelector("span");
                     if (PickBrew.isFavorite(id)) {
@@ -457,7 +434,6 @@
                 });
             }
 
-            // ---- Qty increment ----
             document.querySelectorAll(".qty-inc").forEach(function (btn) {
                 btn.addEventListener("click", function (e) {
                     e.preventDefault();
@@ -468,7 +444,6 @@
                 });
             });
 
-            // ---- Qty decrement ----
             document.querySelectorAll(".qty-dec").forEach(function (btn) {
                 btn.addEventListener("click", function (e) {
                     e.preventDefault();
@@ -479,7 +454,6 @@
                 });
             });
 
-            // ---- Favorite toggle ----
             document.querySelectorAll(".fav-btn").forEach(function (btn) {
                 btn.addEventListener("click", function (e) {
                     e.preventDefault();
@@ -497,7 +471,6 @@
                 });
             });
 
-            // Initial sync
             syncUI();
         });
     </script>

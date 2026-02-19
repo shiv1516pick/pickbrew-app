@@ -13,17 +13,13 @@
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
 
-        <!-- Header -->
         <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
             <h1 class="text-2xl font-semibold text-center">Favorites</h1>
         </div>
 
-        <!-- Content -->
         <div id="fav-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
-            <!-- Rendered by JS -->
         </div>
 
-        <!-- Bottom nav -->
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
@@ -92,7 +88,6 @@
                 html += '</div>';
                 area.innerHTML = html;
 
-                // Bind remove
                 area.querySelectorAll(".remove-fav").forEach(function (btn) {
                     btn.addEventListener("click", function () {
                         PickBrew.removeFavorite(btn.dataset.id);
@@ -101,7 +96,6 @@
                     });
                 });
 
-                // Bind add to cart
                 area.querySelectorAll(".add-fav-cart").forEach(function (btn) {
                     btn.addEventListener("click", function () {
                         PickBrew.addToCart({

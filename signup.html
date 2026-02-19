@@ -12,43 +12,30 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-
-        <!-- Header -->
         <div class="h-44 shrink-0 bg-[#5a7479] flex flex-col items-center justify-center gap-2">
             <span class="material-symbols-outlined text-[48px]">local_cafe</span>
             <h1 class="text-2xl font-semibold">PickBrew</h1>
             <p class="text-sm opacity-80">Join us for great coffee</p>
         </div>
-
-        <!-- Content -->
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
             <div class="px-6 pt-8 pb-8">
-
                 <h2 class="text-xl font-semibold mb-1">Create Account</h2>
                 <p class="text-sm text-gray-400 mb-8">Sign up to get started</p>
-
-                <!-- Full Name -->
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Full Name</label>
                     <input type="text" placeholder="John Doe"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
-
-                <!-- Email -->
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Email</label>
                     <input type="email" placeholder="you@example.com"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
-
-                <!-- Phone -->
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Phone Number</label>
                     <input type="tel" placeholder="+1 (555) 000-0000"
                         class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
                 </div>
-
-                <!-- Password -->
                 <div class="mb-5">
                     <label class="block text-sm text-gray-300 mb-2">Password</label>
                     <div class="relative">
@@ -60,8 +47,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Confirm Password -->
                 <div class="mb-6">
                     <label class="block text-sm text-gray-300 mb-2">Confirm Password</label>
                     <div class="relative">
@@ -73,8 +58,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Terms -->
                 <label class="flex items-start gap-3 mb-8">
                     <input type="checkbox"
                         class="mt-0.5 w-5 h-5 rounded accent-[#af7b5c] bg-gray-700 border-gray-600" />
@@ -83,21 +66,15 @@
                         <a href="#" class="text-[#c8a27a] underline">Privacy Policy</a>
                     </span>
                 </label>
-
-                <!-- Sign up button -->
                 <a href="profile.html"
                     class="block w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-6">
                     Create Account
                 </a>
-
-                <!-- Divider -->
                 <div class="flex items-center gap-4 mb-6">
                     <hr class="flex-1 border-gray-700" />
                     <span class="text-xs text-gray-500">or sign up with</span>
                     <hr class="flex-1 border-gray-700" />
                 </div>
-
-                <!-- Social signups -->
                 <div class="flex gap-4 mb-8">
                     <button
                         class="flex-1 py-3 border border-gray-700 rounded-xl flex items-center justify-center gap-2 text-sm text-gray-300">
@@ -126,21 +103,16 @@
                         Apple
                     </button>
                 </div>
-
-                <!-- Login link -->
                 <p class="text-center text-sm text-gray-400">
                     Already have an account?
                     <a href="login.html" class="text-[#af7b5c] font-semibold">Sign In</a>
                 </p>
-
             </div>
         </div>
-
     </div>
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
-
     <script>
         function togglePassword(btn) {
             const input = btn.parentElement.querySelector('input');

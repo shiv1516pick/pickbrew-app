@@ -12,8 +12,6 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-
-        <!-- Hero image -->
         <div class="relative shrink-0">
             <img id="hero-img" src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
                 class="w-full h-56 object-cover" />
@@ -26,19 +24,13 @@
                 <span id="fav-icon" class="material-symbols-outlined text-white text-[20px]">favorite_border</span>
             </button>
         </div>
-
-        <!-- Scrollable content -->
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-8 flex-1 overflow-y-auto relative z-10">
             <div class="px-6 pt-6 pb-6">
-
-                <!-- Name & Price -->
                 <div class="flex justify-between items-start mb-1">
                     <h1 id="product-name" class="text-xl font-semibold">Brewed Coffee</h1>
                     <span id="base-price-display" class="text-xl font-semibold">$4.29</span>
                 </div>
                 <p id="product-desc" class="text-sm text-gray-400 mb-6">Fresh brewed house blend coffee</p>
-
-                <!-- Size -->
                 <div class="mb-5">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Size</h3>
                     <div class="flex gap-3 option-group" data-option="size">
@@ -49,8 +41,6 @@
                             (+$0.80)</button>
                     </div>
                 </div>
-
-                <!-- Strength -->
                 <div class="mb-5">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Strength</h3>
                     <div class="flex gap-3 option-group" data-option="strength">
@@ -61,8 +51,6 @@
                             Strong</button>
                     </div>
                 </div>
-
-                <!-- Flavor -->
                 <div class="mb-5">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Flavor</h3>
                     <div class="flex gap-2 flex-wrap option-group" data-option="flavor">
@@ -78,8 +66,6 @@
                             class="opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Mocha</button>
                     </div>
                 </div>
-
-                <!-- Add-ons -->
                 <div class="mb-5">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Add-ons</h3>
                     <div class="space-y-3">
@@ -117,8 +103,6 @@
                         </label>
                     </div>
                 </div>
-
-                <!-- Note -->
                 <div class="mb-4">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Special Instructions</h3>
                     <textarea id="note-input" rows="2" placeholder="e.g. Extra hot, no sugar..."
@@ -127,8 +111,6 @@
 
             </div>
         </div>
-
-        <!-- Fixed bottom bar -->
         <div class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-4">
@@ -154,7 +136,6 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Product data
             var products = {
                 "brewed-coffee": { name: "Brewed Coffee", price: 4.29, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", desc: "Fresh brewed house blend coffee" },
                 "vanilla-cold-brew": { name: "Vanilla Cold Brew", price: 4.79, image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735", desc: "Slow-steeped cold brew with vanilla" },
@@ -166,20 +147,14 @@
                 "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese" },
                 "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1555507036-ab1f4038024a", desc: "Freshly baked flaky croissant" }
             };
-
-            // Get product id from URL
             var params = new URLSearchParams(window.location.search);
             var pid = params.get("id") || "brewed-coffee";
             var product = products[pid] || products["brewed-coffee"];
-
-            // Set product info
             document.getElementById("hero-img").src = product.image;
             document.getElementById("product-name").textContent = product.name;
             document.getElementById("product-desc").textContent = product.desc;
             document.getElementById("base-price-display").textContent = "$" + product.price.toFixed(2);
             document.title = product.name + " — PickBrew";
-
-            // State
             var state = { size: "Regular", strength: "Regular", flavor: "None", addons: [], qty: 1 };
             var basePrice = product.price;
             var ACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
@@ -200,8 +175,6 @@
                 var total = unitPrice * state.qty;
                 document.getElementById("total-price").textContent = "$" + total.toFixed(2);
             }
-
-            // Option group clicks
             document.querySelectorAll(".option-group").forEach(function (group) {
                 group.querySelectorAll(".opt-btn").forEach(function (btn) {
                     btn.addEventListener("click", function () {
@@ -216,12 +189,10 @@
                 });
             });
 
-            // Addon checkboxes
             document.querySelectorAll(".addon-chk").forEach(function (chk) {
                 chk.addEventListener("change", calcPrice);
             });
 
-            // Quantity
             document.getElementById("qty-minus").addEventListener("click", function () {
                 if (state.qty > 1) { state.qty--; document.getElementById("qty-display").textContent = state.qty; calcPrice(); }
             });
@@ -229,7 +200,6 @@
                 state.qty++; document.getElementById("qty-display").textContent = state.qty; calcPrice();
             });
 
-            // Favorite
             var favIcon = document.getElementById("fav-icon");
             function updateFavIcon() {
                 favIcon.textContent = PickBrew.isFavorite(pid) ? "favorite" : "favorite_border";
@@ -242,7 +212,6 @@
                 PickBrew.showToast(PickBrew.isFavorite(pid) ? "Added to favorites" : "Removed from favorites");
             });
 
-            // Add to cart
             document.getElementById("add-to-cart-btn").addEventListener("click", function () {
                 var addons = [];
                 document.querySelectorAll(".addon-chk:checked").forEach(function (c) { addons.push(c.dataset.addon); });
@@ -270,7 +239,6 @@
                 PickBrew.showToast("Added " + state.qty + "x " + product.name + " to cart");
                 setTimeout(function () { window.location.href = "cart.html"; }, 800);
             });
-
             calcPrice();
         });
     </script>

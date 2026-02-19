@@ -13,17 +13,11 @@
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
 
-        <!-- Header -->
         <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
             <h1 class="text-2xl font-semibold text-center">Cart</h1>
         </div>
-
-        <!-- Scrollable items -->
         <div id="cart-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
-            <!-- Rendered by JS -->
         </div>
-
-        <!-- Order summary -->
         <div id="checkout-bar" class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4" style="display:none;">
             <div class="flex justify-between text-sm text-gray-400 mb-2">
                 <span>Subtotal</span>
@@ -42,8 +36,6 @@
                 Checkout
             </button>
         </div>
-
-        <!-- Bottom nav -->
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
@@ -122,8 +114,6 @@
                 });
                 html += '</div>';
                 area.innerHTML = html;
-
-                // Totals
                 var subtotal = PickBrew.getCartTotal();
                 var tax = subtotal * 0.08;
                 var total = subtotal + tax;
@@ -131,8 +121,6 @@
                 document.getElementById("tax").textContent = "$" + tax.toFixed(2);
                 document.getElementById("total").textContent = "$" + total.toFixed(2);
                 document.getElementById("checkout-btn").textContent = "Checkout — $" + total.toFixed(2);
-
-                // Bind events
                 area.querySelectorAll(".qty-dec").forEach(function (btn) {
                     btn.addEventListener("click", function () {
                         PickBrew.updateQty(parseInt(btn.dataset.index), -1);
@@ -169,12 +157,9 @@
                 var subtotal = PickBrew.getCartTotal();
                 var tax = subtotal * 0.08;
                 var total = subtotal + tax;
-                // Save order to history
                 PickBrew.saveOrder(cart, total);
-                // Clear cart
                 localStorage.removeItem("pb_cart");
                 PickBrew.updateBadge();
-                // Show confirmation
                 var area = document.getElementById("cart-area");
                 var checkout = document.getElementById("checkout-bar");
                 checkout.style.display = "none";

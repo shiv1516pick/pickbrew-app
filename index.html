@@ -13,14 +13,12 @@
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
 
-        <!-- Hero -->
         <div class="relative shrink-0 h-56 bg-cover bg-center"
             style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="absolute top-5 left-5 right-5 flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[28px]">local_cafe</span>
-                    <span class="text-lg font-semibold">PickBrew</span>
+                    <img src="images/logo.png" class="h-9 rounded bg-white" />
                 </div>
                 <div class="flex items-center gap-2">
                     <div class="bg-white/20 backdrop-blur px-2.5 py-1 rounded-full text-xs flex items-center gap-1">
@@ -36,19 +34,14 @@
             </div>
         </div>
 
-        <!-- Scrollable content -->
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-8 flex-1 overflow-y-auto relative z-10">
             <div class="px-6 pt-6 pb-6">
-
-                <!-- Quick links -->
                 <div class="flex justify-between text-sm mb-6 opacity-80">
                     <a class="underline underline-offset-4" href="index.html">Menu</a>
                     <a href="favorites.html">Favorites</a>
                     <a href="previous.html">Previous</a>
                     <a href="cart.html">Cart</a>
                 </div>
-
-                <!-- Categories -->
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Categories</h3>
 
                 <a href="menu.html#coffee" class="flex items-center gap-5 mb-5">
@@ -93,25 +86,23 @@
                     </div>
                     <span class="material-symbols-outlined text-gray-500">chevron_right</span>
                 </a>
-
-                <!-- Popular items -->
                 <hr class="border-gray-700 mb-5" />
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Popular Now</h3>
 
                 <div class="flex gap-3 overflow-x-auto pb-2">
-                    <a href="product.html" class="shrink-0 w-32">
+                    <a href="product.html?id=brewed-coffee" class="shrink-0 w-32">
                         <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
                             class="w-32 h-32 rounded-2xl object-cover mb-2" />
                         <h4 class="text-sm font-semibold truncate">Brewed Coffee</h4>
                         <p class="text-xs text-[#c8a27a]">$4.29</p>
                     </a>
-                    <a href="product.html" class="shrink-0 w-32">
+                    <a href="product.html?id=iced-mocha" class="shrink-0 w-32">
                         <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
                             class="w-32 h-32 rounded-2xl object-cover mb-2" />
                         <h4 class="text-sm font-semibold truncate">Iced Mocha</h4>
                         <p class="text-xs text-[#c8a27a]">$5.99</p>
                     </a>
-                    <a href="product.html" class="shrink-0 w-32">
+                    <a href="product.html?id=vanilla-cold-brew" class="shrink-0 w-32">
                         <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735"
                             class="w-32 h-32 rounded-2xl object-cover mb-2" />
                         <h4 class="text-sm font-semibold truncate">Vanilla Cold Brew</h4>
@@ -122,7 +113,6 @@
             </div>
         </div>
 
-        <!-- Bottom nav -->
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>

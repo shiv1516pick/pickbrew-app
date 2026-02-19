@@ -12,18 +12,11 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-
-        <!-- Header -->
         <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
             <h1 class="text-2xl font-semibold text-center">Previous Orders</h1>
         </div>
-
-        <!-- Content -->
         <div id="orders-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
-            <!-- Rendered by JS -->
         </div>
-
-        <!-- Bottom nav -->
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
                 <span class="material-symbols-outlined">local_cafe</span>
@@ -80,14 +73,12 @@
                     '<span class="text-xs px-2 py-0.5 rounded-full bg-green-900 text-green-300">Completed</span>' +
                     '</div>';
 
-                // Item thumbnails row
                 html += '<div class="flex gap-2 mb-3 overflow-x-auto">';
                 order.items.forEach(function (it) {
                     html += '<img src="' + it.image + '" class="w-10 h-10 rounded-full object-cover shrink-0" title="' + it.name + '" />';
                 });
                 html += '</div>';
 
-                // Items summary
                 html += '<div class="space-y-1 mb-3">';
                 order.items.forEach(function (it) {
                     html += '<div class="flex justify-between text-sm">' +
@@ -107,7 +98,6 @@
             html += '</div>';
             area.innerHTML = html;
 
-            // Reorder buttons
             area.querySelectorAll(".reorder-btn").forEach(function (btn) {
                 btn.addEventListener("click", function () {
                     var items = JSON.parse(btn.dataset.order);
