@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout — PickBrew</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-black text-white">
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+
+        <!-- Header -->
+        <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <div class="flex items-center px-5">
+                <a href="cart.html" class="w-8 h-8 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+                </a>
+                <h1 class="text-lg font-semibold flex-1 text-center pr-8">Checkout</h1>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div id="checkout-content" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto relative z-10">
+            <div class="px-6 pt-7 pb-36">
+
+                <!-- Order Summary -->
+                <div id="order-summary" class="mb-5"></div>
+
+                <!-- Subtotal / Sales Tax / Tip / Total -->
+                <div class="border-t border-gray-700 pt-4 pb-2">
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="font-semibold">Subtotal</span>
+                        <span id="co-subtotal" class="font-semibold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="font-semibold">Sales Tax</span>
+                        <span id="co-tax" class="font-semibold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="font-semibold">Tip</span>
+                        <span id="co-tip" class="font-semibold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="font-bold">Total</span>
+                        <span id="co-total" class="font-bold">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Tip Section -->
+                <div class="border-t border-gray-700 pt-5 pb-5">
+                    <h3 class="font-bold mb-4">Tip</h3>
+                    <div class="flex items-center gap-3">
+                        <div class="inline-flex rounded-lg overflow-hidden border border-gray-600">
+                            <button data-tip="0"
+                                class="tip-btn px-3 py-2.5 text-xs font-semibold border-r border-gray-600 text-gray-300 leading-tight">No<br>Tip</button>
+                            <button data-tip="10"
+                                class="tip-btn px-4 py-2.5 text-xs font-semibold border-r border-gray-600 text-gray-300">10%</button>
+                            <button data-tip="15"
+                                class="tip-btn px-4 py-2.5 text-xs font-semibold border-r border-gray-600 bg-[#af7b5c] text-black">15%</button>
+                            <button data-tip="20"
+                                class="tip-btn px-4 py-2.5 text-xs font-semibold border-r border-gray-600 text-gray-300">20%</button>
+                            <button id="custom-tip-btn"
+                                class="tip-btn px-3 py-2.5 text-xs font-semibold text-gray-300">Custom</button>
+                        </div>
+                        <span id="tip-amount" class="text-sm font-bold">$0.00</span>
+                    </div>
+                    <input id="custom-tip-input" type="number" min="0" step="0.01" placeholder="Enter tip amount"
+                        class="hidden w-full mt-3 bg-black border border-gray-600 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                </div>
+
+                <!-- Pickup At -->
+                <div class="border-t border-gray-700 pt-5 pb-5">
+                    <h3 class="font-bold mb-4">Pickup at</h3>
+                    <div class="flex gap-2 flex-wrap mb-3">
+                        <button data-pickup="Counter"
+                            class="pickup-btn px-5 py-2 text-xs font-semibold rounded-full bg-[#af7b5c] text-black">Counter</button>
+                        <button data-pickup="Drive Thru"
+                            class="pickup-btn px-5 py-2 text-xs font-semibold rounded-full border border-gray-600 text-gray-400">Drive
+                            Thru</button>
+                        <button data-pickup="Curbside"
+                            class="pickup-btn px-5 py-2 text-xs font-semibold rounded-full border border-gray-600 text-gray-400">Curbside</button>
+                        <button data-pickup="Dine In"
+                            class="pickup-btn px-5 py-2 text-xs font-semibold rounded-full border border-gray-600 text-gray-400">Dine
+                            In</button>
+                    </div>
+                    <p id="pickup-msg" class="text-sm text-gray-400 leading-relaxed">Thank you!</p>
+                </div>
+
+                <!-- Pickup By -->
+                <div class="border-t border-gray-700 pt-5 pb-5">
+                    <h3 class="font-bold mb-3">Pickup by</h3>
+                    <input id="pickup-name" type="text" placeholder="Enter your name"
+                        class="w-full bg-transparent border border-gray-600 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                </div>
+
+                <!-- Points -->
+                <div class="border-t border-gray-700 pt-5 pb-5">
+                    <h3 class="font-bold mb-3">Points</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm text-gray-400">Available</span>
+                            <span class="text-sm font-bold">200 = $2.00</span>
+                        </div>
+                        <button id="redeem-btn" class="text-sm font-semibold text-[#af7b5c]">Redeem</button>
+                    </div>
+                </div>
+
+                <!-- Loyalty -->
+                <button id="loyalty-btn"
+                    class="w-full py-3.5 bg-[#dc2626] text-white text-center rounded-full font-semibold text-sm my-4">
+                    Sign up for loyalty
+                </button>
+
+                <!-- Promo Codes -->
+                <div class="border-t border-gray-700 pt-5 pb-5">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold">Promo codes</h3>
+                        <button id="promo-add-btn" class="text-sm font-semibold text-[#af7b5c]">Add</button>
+                    </div>
+                    <input id="promo-input" type="text" placeholder="Enter promo code"
+                        class="hidden w-full mt-3 bg-black border border-gray-600 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                </div>
+
+                <!-- Payment -->
+                <div class="border-t border-gray-700 pt-5 pb-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold">Payment</h3>
+                        <button id="payment-add-btn" class="text-sm font-semibold text-[#af7b5c]">Add</button>
+                    </div>
+                    <p id="payment-status" class="text-sm text-gray-400 mt-2">Please add a card</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Order Bar -->
+        <div id="order-bar" class="shrink-0 bg-[#121212] border-t border-gray-800 px-4 py-3">
+            <div class="flex items-center justify-between bg-[#af7b5c] rounded-full px-1.5 py-1.5">
+                <span id="bar-total" class="text-black font-bold text-sm pl-4">$0.00</span>
+                <div class="flex items-center gap-1.5">
+                    <div class="bg-[#8b5e3c] text-white text-[10px] font-bold px-3 py-2 rounded-full text-center leading-tight">
+                        Prep time<br><span id="bar-prep" class="text-[11px]">10-12</span>
+                    </div>
+                    <button id="order-now-btn"
+                        class="flex items-center gap-1 bg-black text-white text-sm font-bold px-5 py-2.5 rounded-full">
+                        Order Now
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dine In Modal -->
+    <div id="dinein-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60" id="dinein-overlay"></div>
+        <div class="relative flex items-center justify-center min-h-full px-8">
+            <div class="bg-white text-black rounded-2xl p-6 w-full max-w-sm shadow-xl">
+                <p class="text-sm leading-relaxed mb-4">Please indicate which table you are at when placing this order.
+                    Dine In is to be used while ordering from the table. Orders will not be processed unless proper table
+                    number is indicated. Thank you.</p>
+                <input id="table-input" type="text" placeholder="Table number"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm mb-4 focus:outline-none focus:border-[#af7b5c]" />
+                <div class="flex gap-3">
+                    <button id="dinein-back"
+                        class="flex-1 py-2.5 text-sm font-semibold text-center border border-gray-300 rounded-lg">Go
+                        Back</button>
+                    <button id="dinein-ok"
+                        class="flex-1 py-2.5 text-sm font-semibold text-center bg-black text-white rounded-lg">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Details Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60" id="contact-overlay"></div>
+        <div class="relative flex items-end min-h-full">
+            <div class="bg-[#af7b5c] rounded-t-3xl w-full max-w-md mx-auto px-6 pt-6 pb-8">
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="font-bold text-black text-lg">Add your contact details</h3>
+                    <button id="contact-close"
+                        class="w-8 h-8 flex items-center justify-center text-black rounded-full">
+                        <span class="material-symbols-outlined text-[22px]">close</span>
+                    </button>
+                </div>
+                <input id="phone-input" type="tel" placeholder="Enter mobile number*"
+                    class="w-full bg-white text-black rounded-full px-5 py-3.5 text-sm mb-4 focus:outline-none placeholder-gray-400" />
+                <button id="contact-add-btn"
+                    class="w-full py-3.5 bg-black text-white text-center rounded-full font-bold text-sm">Add</button>
+                <div class="w-32 h-1 bg-black/30 rounded-full mx-auto mt-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60" id="payment-overlay"></div>
+        <div class="relative flex items-end min-h-full">
+            <div class="bg-[#af7b5c] rounded-t-3xl w-full max-w-md mx-auto px-6 pt-6 pb-8">
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="font-bold text-black text-lg">Choose your payment</h3>
+                    <button id="payment-close"
+                        class="w-8 h-8 flex items-center justify-center text-black rounded-full">
+                        <span class="material-symbols-outlined text-[22px]">close</span>
+                    </button>
+                </div>
+                <button id="add-card-btn"
+                    class="w-full py-3.5 border-2 border-dashed border-black/30 text-black text-center rounded-full font-semibold text-sm mb-3">
+                    Add a card
+                </button>
+                <button id="payment-confirm-btn"
+                    class="w-full py-3.5 bg-black text-white text-center rounded-full font-bold text-sm">Confirm</button>
+                <div class="w-32 h-1 bg-black/30 rounded-full mx-auto mt-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
+        <p class="opacity-70">Mobile & Tablet only</p>
+    </div>
+    <script src="app.js"></script>
+    <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var cart = PickBrew.getCart();
+            if (cart.length === 0) { window.location.href = "cart.html"; return; }
+
+            var prepTimes = {
+                "brewed-coffee": "5-10", "vanilla-cold-brew": "5-8", "espresso-shot": "10-15",
+                "americano": "5-15", "caramel-latte": "10-12", "cappuccino": "13-15",
+                "iced-mocha": "14-16", "bagel-cream-cheese": "13-15", "butter-croissant": "12-15"
+            };
+
+            var state = { tipPercent: 15, tipCustom: null, pickup: "Counter", table: "", phone: "", cardAdded: false };
+            var subtotal = PickBrew.getCartTotal();
+            var tax = +(subtotal * 0.08).toFixed(2);
+
+            // --- Order Summary ---
+            var summaryHtml = '';
+            cart.forEach(function (item) {
+                var details = [];
+                if (item.size) details.push(item.size);
+                if (item.strength && item.strength !== "Regular") details.push(item.strength + " Strength");
+                if (item.flavor && item.flavor !== "None") details.push(item.flavor);
+                if (item.addons && item.addons.length) details.push(item.addons.join(", "));
+                summaryHtml += '<div class="flex justify-between items-start mb-3">' +
+                    '<div class="flex-1 pr-3">' +
+                    '<p class="text-sm font-bold">' + item.qty + ' x ' + item.name + '</p>' +
+                    (details.length ? '<p class="text-xs text-gray-400 mt-0.5">' + details.join(", ") + '</p>' : '') +
+                    (item.note ? '<p class="text-xs text-gray-400 mt-0.5">Note: ' + item.note + '</p>' : '') +
+                    '</div>' +
+                    '<span class="text-sm font-bold">$' + (item.price * item.qty).toFixed(2) + '</span>' +
+                    '</div>';
+            });
+            document.getElementById("order-summary").innerHTML = summaryHtml;
+
+            // --- Prep Time ---
+            var maxPrep = 0;
+            cart.forEach(function (item) {
+                var pt = prepTimes[item.id] || "5-10";
+                var parts = pt.replace(/[^0-9\-–]/g, "").split(/[-–]/);
+                var high = parseInt(parts[1] || parts[0]) || 10;
+                if (high > maxPrep) maxPrep = high;
+            });
+            var prepLow = Math.max(maxPrep - 3, 1);
+            var prepRange = prepLow + "-" + maxPrep;
+            document.getElementById("bar-prep").textContent = prepRange;
+
+            // --- Prefill name ---
+            var user = PickBrew.getUser();
+            if (user && user.name) document.getElementById("pickup-name").value = user.name;
+
+            // --- Calc & render totals ---
+            function calcTotals() {
+                var tipVal = 0;
+                if (state.tipCustom !== null) {
+                    tipVal = state.tipCustom;
+                } else {
+                    tipVal = +(subtotal * state.tipPercent / 100).toFixed(2);
+                }
+                var total = subtotal + tax + tipVal;
+                document.getElementById("co-subtotal").textContent = "$" + subtotal.toFixed(2);
+                document.getElementById("co-tax").textContent = "$" + tax.toFixed(2);
+                document.getElementById("co-tip").textContent = "$" + tipVal.toFixed(2);
+                document.getElementById("co-total").textContent = "$" + total.toFixed(2);
+                document.getElementById("tip-amount").textContent = "$" + tipVal.toFixed(2);
+                document.getElementById("bar-total").textContent = "$" + total.toFixed(2);
+            }
+            calcTotals();
+
+            // --- Tip buttons ---
+            var ACTIVE_TIP = "tip-btn px-4 py-2.5 text-xs font-semibold bg-[#af7b5c] text-black";
+            var INACTIVE_TIP = "tip-btn px-4 py-2.5 text-xs font-semibold text-gray-300";
+            var tipBtns = document.querySelectorAll(".tip-btn");
+            var customInput = document.getElementById("custom-tip-input");
+
+            function setActiveTip(activeBtn) {
+                tipBtns.forEach(function (b) {
+                    var hasBorderR = b.classList.contains("border-r");
+                    b.className = INACTIVE_TIP + (hasBorderR ? " border-r border-gray-600" : "");
+                    if (b.dataset.tip === "0") b.innerHTML = "No<br>Tip";
+                });
+                var hasBorderR = activeBtn.classList.contains("border-r");
+                activeBtn.className = ACTIVE_TIP + (hasBorderR ? " border-r border-gray-600" : "");
+            }
+
+            tipBtns.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    setActiveTip(btn);
+                    if (btn.id === "custom-tip-btn") {
+                        customInput.classList.remove("hidden");
+                        customInput.focus();
+                        state.tipCustom = parseFloat(customInput.value) || 0;
+                    } else {
+                        customInput.classList.add("hidden");
+                        state.tipPercent = parseInt(btn.dataset.tip);
+                        state.tipCustom = null;
+                    }
+                    calcTotals();
+                });
+            });
+            customInput.addEventListener("input", function () {
+                state.tipCustom = parseFloat(customInput.value) || 0;
+                calcTotals();
+            });
+
+            // --- Pickup buttons ---
+            var ACTIVE_PICKUP = "pickup-btn px-5 py-2 text-xs font-semibold rounded-full bg-[#af7b5c] text-black";
+            var INACTIVE_PICKUP = "pickup-btn px-5 py-2 text-xs font-semibold rounded-full border border-gray-600 text-gray-400";
+            var pickupBtns = document.querySelectorAll(".pickup-btn");
+            var pickupMsgs = {
+                "Counter": "Thank you!",
+                "Drive Thru": "",
+                "Curbside": "Please come to our 3rd St takeout window to pick up your order.",
+                "Dine In": ""
+            };
+
+            function setActivePickup(btn) {
+                pickupBtns.forEach(function (b) { b.className = INACTIVE_PICKUP; });
+                btn.className = ACTIVE_PICKUP;
+            }
+
+            pickupBtns.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var val = btn.dataset.pickup;
+                    if (val === "Dine In") {
+                        document.getElementById("dinein-modal").classList.remove("hidden");
+                        return;
+                    }
+                    state.pickup = val;
+                    state.table = "";
+                    setActivePickup(btn);
+                    document.getElementById("pickup-msg").textContent = pickupMsgs[val] || "";
+                });
+            });
+
+            // --- Dine In modal ---
+            document.getElementById("dinein-back").addEventListener("click", function () {
+                document.getElementById("dinein-modal").classList.add("hidden");
+            });
+            document.getElementById("dinein-overlay").addEventListener("click", function () {
+                document.getElementById("dinein-modal").classList.add("hidden");
+            });
+            document.getElementById("dinein-ok").addEventListener("click", function () {
+                var table = document.getElementById("table-input").value.trim();
+                if (!table) { document.getElementById("table-input").focus(); return; }
+                state.pickup = "Dine In";
+                state.table = table;
+                document.getElementById("dinein-modal").classList.add("hidden");
+                setActivePickup(document.querySelector('[data-pickup="Dine In"]'));
+                document.getElementById("pickup-msg").textContent = "Table " + table;
+            });
+
+            // --- Promo toggle ---
+            document.getElementById("promo-add-btn").addEventListener("click", function () {
+                var inp = document.getElementById("promo-input");
+                inp.classList.toggle("hidden");
+                if (!inp.classList.contains("hidden")) inp.focus();
+            });
+
+            // --- Redeem points ---
+            document.getElementById("redeem-btn").addEventListener("click", function () {
+                PickBrew.showToast("200 points redeemed — $2.00 off!");
+            });
+
+            // --- Loyalty ---
+            document.getElementById("loyalty-btn").addEventListener("click", function () {
+                window.location.href = "profile.html";
+            });
+
+            // --- Payment modal ---
+            document.getElementById("payment-add-btn").addEventListener("click", function () {
+                document.getElementById("payment-modal").classList.remove("hidden");
+            });
+            document.getElementById("payment-close").addEventListener("click", function () {
+                document.getElementById("payment-modal").classList.add("hidden");
+            });
+            document.getElementById("payment-overlay").addEventListener("click", function () {
+                document.getElementById("payment-modal").classList.add("hidden");
+            });
+            document.getElementById("add-card-btn").addEventListener("click", function () {
+                PickBrew.showToast("Card added successfully");
+                state.cardAdded = true;
+                document.getElementById("payment-status").innerHTML = '<span class="text-white">Card ending •••• 4242</span>';
+                document.getElementById("payment-modal").classList.add("hidden");
+            });
+            document.getElementById("payment-confirm-btn").addEventListener("click", function () {
+                if (!state.cardAdded) { PickBrew.showToast("Please add a card first"); return; }
+                document.getElementById("payment-modal").classList.add("hidden");
+                PickBrew.showToast("Payment method confirmed");
+            });
+
+            // --- Contact modal ---
+            document.getElementById("pickup-name").addEventListener("focus", function () {
+                if (!this.value.trim() && !state.phone) {
+                    document.getElementById("contact-modal").classList.remove("hidden");
+                }
+            });
+            document.getElementById("contact-close").addEventListener("click", function () {
+                document.getElementById("contact-modal").classList.add("hidden");
+            });
+            document.getElementById("contact-overlay").addEventListener("click", function () {
+                document.getElementById("contact-modal").classList.add("hidden");
+            });
+            document.getElementById("contact-add-btn").addEventListener("click", function () {
+                var phone = document.getElementById("phone-input").value.trim();
+                if (!phone) { document.getElementById("phone-input").focus(); return; }
+                state.phone = phone;
+                document.getElementById("contact-modal").classList.add("hidden");
+                PickBrew.showToast("Contact details saved");
+            });
+
+            // --- Order Now ---
+            document.getElementById("order-now-btn").addEventListener("click", function () {
+                var name = document.getElementById("pickup-name").value.trim();
+                if (!name) {
+                    PickBrew.showToast("Please enter your name");
+                    document.getElementById("pickup-name").focus();
+                    return;
+                }
+                if (state.pickup === "Dine In" && !state.table) {
+                    document.getElementById("dinein-modal").classList.remove("hidden");
+                    return;
+                }
+
+                var tipVal = state.tipCustom !== null ? state.tipCustom : +(subtotal * state.tipPercent / 100).toFixed(2);
+                var total = subtotal + tax + tipVal;
+
+                PickBrew.saveOrder(cart, total);
+                localStorage.removeItem("pb_cart");
+                PickBrew.updateBadge();
+
+                document.getElementById("order-bar").style.display = "none";
+                document.getElementById("checkout-content").innerHTML =
+                    '<div class="flex flex-col justify-center items-center h-full px-6">' +
+                    '<span class="material-symbols-outlined text-[60px] text-[#af7b5c] mb-4">check_circle</span>' +
+                    '<h2 class="text-xl font-bold mb-2">Order Placed!</h2>' +
+                    '<p class="text-sm text-gray-400 text-center mb-1">Your order of <span class="text-white font-semibold">$' + total.toFixed(2) + '</span> has been confirmed.</p>' +
+                    '<p class="text-xs text-gray-500 mb-1">Pickup: ' + state.pickup + (state.table ? ' — Table ' + state.table : '') + '</p>' +
+                    '<p class="text-xs text-gray-500 mb-8">Estimated prep: ~' + maxPrep + ' min</p>' +
+                    '<a href="previous.html" class="w-full max-w-[220px] py-3 bg-[#af7b5c] text-black text-center text-sm font-bold rounded-full block mb-3">View Orders</a>' +
+                    '<a href="menu.html" class="w-full max-w-[220px] py-3 border border-gray-600 text-gray-300 text-center text-sm font-medium rounded-full block">Continue Shopping</a>' +
+                    '</div>';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -69,7 +69,12 @@
                     return;
                 }
 
-                var html = '<div class="px-6 pt-8 pb-4">';
+                var html = '<div class="px-6 pt-8 pb-4">' +
+                    '<div class="flex justify-between items-center mb-5">' +
+                    '<span class="text-sm text-gray-400">' + favs.length + (favs.length === 1 ? ' favorite' : ' favorites') + '</span>' +
+                    '<button id="clear-favs-btn" class="flex items-center gap-1 text-xs text-red-400 font-medium">' +
+                    '<span class="material-symbols-outlined text-[16px]">heart_broken</span>Clear All</button>' +
+                    '</div>';
                 favs.forEach(function (item) {
                     html += '<div class="mb-6">' +
                         '<div class="flex gap-4 items-center">' +
@@ -119,6 +124,14 @@
                         PickBrew.showToast(btn.dataset.name + " added to cart");
                     });
                 });
+                var clearFavBtn = document.getElementById("clear-favs-btn");
+                if (clearFavBtn) {
+                    clearFavBtn.addEventListener("click", function () {
+                        localStorage.removeItem("pb_favs");
+                        PickBrew.showToast("Favorites cleared");
+                        renderFavs();
+                    });
+                }
             }
 
             renderFavs();

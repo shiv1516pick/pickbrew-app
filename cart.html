@@ -28,6 +28,16 @@
             </div>
         </div>
         <div id="checkout-bar" class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4" style="display:none;">
+            <div id="loyalty-banner"
+                class="flex items-center gap-3 bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 mb-4">
+                <span class="material-symbols-outlined text-[#af7b5c] text-[24px]">loyalty</span>
+                <div class="flex-1">
+                    <p class="text-xs font-semibold text-white">Join PickBrew Rewards</p>
+                    <p class="text-[11px] text-gray-400">Earn points on every order</p>
+                </div>
+                <a href="profile.html" class="text-xs font-semibold text-[#af7b5c] whitespace-nowrap">Sign Up for
+                    loyalty</a>
+            </div>
             <div class="flex justify-between text-sm text-gray-400 mb-2">
                 <span>Subtotal</span>
                 <span id="subtotal">$0.00</span>
@@ -36,14 +46,24 @@
                 <span>Tax (8%)</span>
                 <span id="tax">$0.00</span>
             </div>
-            <div class="flex justify-between font-semibold mb-4">
+            <div class="flex justify-between font-semibold mb-3">
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
+            <div id="prep-estimate" class="flex items-center justify-center gap-1.5 mb-4">
+                <span class="material-symbols-outlined text-[#af7b5c] text-[16px]">schedule</span>
+                <span class="text-xs text-gray-300">Estimated prep: <span id="prep-time"
+                        class="text-white font-semibold">~10 min</span></span>
+            </div>
             <button id="checkout-btn"
-                class="w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
+                class="w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-3">
                 Checkout
             </button>
+            <a href="menu.html"
+                class="flex items-center justify-center gap-1.5 py-2.5 border border-gray-600 rounded-full text-sm text-gray-300 font-medium">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+                Add More Items
+            </a>
         </div>
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
@@ -72,6 +92,27 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            var prepTimes = {
+                "brewed-coffee": "5-10 min",
+                "vanilla-cold-brew": "5-8 min",
+                "espresso-shot": "10-15 min",
+                "americano": "5-15 min",
+                "caramel-latte": "10-12 min",
+                "cappuccino": "13-15 min",
+                "iced-mocha": "14-16 min",
+                "bagel-cream-cheese": "13-15 min",
+                "butter-croissant": "12-15 min"
+            };
+            function getMaxPrep(cart) {
+                var maxMin = 0;
+                cart.forEach(function (item) {
+                    var pt = prepTimes[item.id] || "5-10 min";
+                    var parts = pt.replace(/[^0-9\-–]/g, "").split(/[-–]/);
+                    var high = parseInt(parts[1] || parts[0]) || 10;
+                    if (high > maxMin) maxMin = high;
+                });
+                return maxMin;
+            }
             function renderCart() {
                 var cart = PickBrew.getCart();
                 var area = document.getElementById("cart-area");
@@ -88,7 +129,12 @@
                 }
 
                 checkout.style.display = "";
-                var html = '<div class="px-6 pt-8 pb-4">';
+                var html = '<div class="px-6 pt-8 pb-4">' +
+                    '<div class="flex justify-between items-center mb-5">' +
+                    '<span class="text-sm text-gray-400">' + cart.length + (cart.length === 1 ? ' item' : ' items') + '</span>' +
+                    '<button id="clear-cart-btn" class="flex items-center gap-1 text-xs text-red-400 font-medium">' +
+                    '<span class="material-symbols-outlined text-[16px]">remove_shopping_cart</span>Clear Cart</button>' +
+                    '</div>';
                 cart.forEach(function (item, i) {
                     var details = [];
                     if (item.size) details.push(item.size);
@@ -131,6 +177,11 @@
                 document.getElementById("tax").textContent = "$" + tax.toFixed(2);
                 document.getElementById("total").textContent = "$" + total.toFixed(2);
                 document.getElementById("checkout-btn").textContent = "Checkout — $" + total.toFixed(2);
+                var maxPrep = getMaxPrep(cart);
+                document.getElementById("prep-time").textContent = "~" + maxPrep + " min";
+                var loyaltyBanner = document.getElementById("loyalty-banner");
+                if (PickBrew.isLoggedIn()) loyaltyBanner.style.display = "none";
+                else loyaltyBanner.style.display = "";
                 area.querySelectorAll(".qty-dec").forEach(function (btn) {
                     btn.addEventListener("click", function () {
                         PickBrew.updateQty(parseInt(btn.dataset.index), -1);
@@ -159,28 +210,21 @@
                         PickBrew.showToast(PickBrew.isFavorite(item.id) ? "Added to favorites" : "Removed from favorites");
                     });
                 });
+                var clearBtn = document.getElementById("clear-cart-btn");
+                if (clearBtn) {
+                    clearBtn.addEventListener("click", function () {
+                        localStorage.removeItem("pb_cart");
+                        PickBrew.updateBadge();
+                        PickBrew.showToast("Cart cleared");
+                        renderCart();
+                    });
+                }
             }
 
             document.getElementById("checkout-btn").addEventListener("click", function () {
                 var cart = PickBrew.getCart();
                 if (cart.length === 0) return;
-                var subtotal = PickBrew.getCartTotal();
-                var tax = subtotal * 0.08;
-                var total = subtotal + tax;
-                PickBrew.saveOrder(cart, total);
-                localStorage.removeItem("pb_cart");
-                PickBrew.updateBadge();
-                var area = document.getElementById("cart-area");
-                var checkout = document.getElementById("checkout-bar");
-                checkout.style.display = "none";
-                area.innerHTML = '<div class="flex flex-col justify-center items-center h-full px-6">' +
-                    '<span class="material-symbols-outlined text-[56px] text-[#af7b5c] mb-4">check_circle</span>' +
-                    '<h2 class="text-lg font-semibold mb-1">Order Placed!</h2>' +
-                    '<p class="text-sm text-gray-400 text-center mb-2">Your order of $' + total.toFixed(2) + ' has been confirmed.</p>' +
-                    '<p class="text-xs text-gray-500 mb-6">Estimated pickup: 10–15 mins</p>' +
-                    '<a href="previous.html" class="inline-block px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full mb-3">View Orders</a>' +
-                    '<a href="menu.html" class="inline-block px-6 py-2 border border-gray-600 text-gray-300 text-sm font-medium rounded-full">Continue Shopping</a>' +
-                    '</div>';
+                window.location.href = "checkout.html";
             });
 
             renderCart();
