@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PickBrew App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-black text-white">
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+
+        <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <div class="flex items-center gap-1.5 px-5 mb-2">
+                <a href="index.html" class="text-sm opacity-70">Home</a>
+                <span class="material-symbols-outlined text-[14px] opacity-50">chevron_right</span>
+                <span class="text-sm font-semibold">Help Center</span>
+            </div>
+            <h1 class="text-2xl font-semibold text-center">Help Center</h1>
+        </div>
+
+        <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <div class="px-6 pt-8 pb-6">
+
+                <!-- Search -->
+                <div class="relative mb-6">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-[20px]">search</span>
+                    <input id="help-search" type="text" placeholder="Search help topics..."
+                        class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]" />
+                </div>
+
+                <!-- Quick Actions -->
+                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Get in Touch</h3>
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <div class="bg-[#1e1e1e] rounded-2xl p-4 text-center">
+                        <span class="material-symbols-outlined text-[24px] text-[#af7b5c] mb-2 block">chat</span>
+                        <span class="text-[11px] text-gray-300">Live Chat</span>
+                    </div>
+                    <div class="bg-[#1e1e1e] rounded-2xl p-4 text-center">
+                        <span class="material-symbols-outlined text-[24px] text-[#af7b5c] mb-2 block">mail</span>
+                        <span class="text-[11px] text-gray-300">Email Us</span>
+                    </div>
+                    <div class="bg-[#1e1e1e] rounded-2xl p-4 text-center">
+                        <span class="material-symbols-outlined text-[24px] text-[#af7b5c] mb-2 block">call</span>
+                        <span class="text-[11px] text-gray-300">Call Us</span>
+                    </div>
+                </div>
+
+                <hr class="border-gray-700 mb-6" />
+
+                <!-- FAQ Section -->
+                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Frequently Asked
+                    Questions</h3>
+                <div id="faq-list" class="space-y-3">
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">shopping_cart</span>
+                                <span class="text-sm font-medium">How do I place an order?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">Browse our menu, select a drink or food
+                                item, customize your size, strength, flavor and add-ons. Tap "Add to Cart", then head
+                                to your cart to review and checkout.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">edit_note</span>
+                                <span class="text-sm font-medium">Can I modify my order?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">Once an order has been placed, it cannot
+                                be modified. However, you can contact our support team immediately and we will do our
+                                best to accommodate your request before preparation begins.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">favorite</span>
+                                <span class="text-sm font-medium">How do I add favorites?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">Tap the heart icon on any menu item or on
+                                the product detail page. You can view all your favorites from the Favorites tab in the
+                                bottom navigation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">local_cafe</span>
+                                <span class="text-sm font-medium">What sizes are available?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">We offer four sizes: Small (8 oz), Medium
+                                (12 oz), Large (16 oz), and Extra Large (20 oz). Medium is selected by default. Each
+                                size up adds a small surcharge.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">replay</span>
+                                <span class="text-sm font-medium">How do I reorder?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">Go to your Order History from the Profile
+                                page, find the order you want and tap the "Reorder" button. All items from that order
+                                will be added to your cart.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">person</span>
+                                <span class="text-sm font-medium">How do I update my profile?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">Go to Profile and tap the edit icon next
+                                to your name. You can update your name, email and phone number from the Edit Profile
+                                sheet.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-[#1e1e1e] rounded-2xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between px-4 py-3.5 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">support_agent</span>
+                                <span class="text-sm font-medium">How do I contact support?</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-gray-500 faq-arrow">chevron_right</span>
+                        </button>
+                        <div class="faq-body hidden px-4 pb-4 pl-11">
+                            <p class="text-sm text-gray-400 leading-relaxed">You can reach us via Live Chat (available
+                                9 AM – 9 PM), email at support@pickbrew.com, or call us at (555) 123-4567.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <hr class="border-gray-700 my-6" />
+                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Contact Information</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">mail</span>
+                        <span class="text-sm text-gray-300">support@pickbrew.com</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">call</span>
+                        <span class="text-sm text-gray-300">(555) 123-4567</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[20px] text-[#af7b5c]">schedule</span>
+                        <span class="text-sm text-gray-300">Mon – Sun, 9:00 AM – 9:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
+            <a href="index.html" class="nav-item">
+                <span class="material-symbols-outlined">local_cafe</span>
+            </a>
+            <a href="menu.html" class="nav-item">
+                <span class="material-symbols-outlined">menu_book_2</span>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <span class="material-symbols-outlined">favorite</span>
+            </a>
+            <a href="cart.html" class="nav-item relative">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <span style="display:none"
+                    class="cart-badge absolute -top-1 -right-2 bg-[#441a0e] border text-xs rounded-full px-1.5 py-.75 text-white"></span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="material-symbols-outlined">account_circle</span>
+            </a>
+        </div>
+    </div>
+    <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
+        <p class="opacity-70">Mobile & Tablet only</p>
+    </div>
+    <script src="app.js"></script>
+    <script src="index.js"></script>
+    <script>
+        // FAQ accordion
+        document.querySelectorAll(".faq-toggle").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                var body = btn.nextElementSibling;
+                var arrow = btn.querySelector(".faq-arrow");
+                var isOpen = !body.classList.contains("hidden");
+                document.querySelectorAll(".faq-body").forEach(function (b) { b.classList.add("hidden"); });
+                document.querySelectorAll(".faq-arrow").forEach(function (a) { a.textContent = "chevron_right"; });
+                if (!isOpen) {
+                    body.classList.remove("hidden");
+                    arrow.textContent = "expand_more";
+                }
+            });
+        });
+        // Search filter
+        document.getElementById("help-search").addEventListener("input", function () {
+            var q = this.value.toLowerCase();
+            document.querySelectorAll(".faq-item").forEach(function (item) {
+                var text = item.textContent.toLowerCase();
+                item.style.display = text.indexOf(q) > -1 ? "" : "none";
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -13,9 +13,18 @@
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
         <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <div class="flex items-center gap-1.5 px-5 mb-2">
+                <a href="index.html" class="text-sm opacity-70">Home</a>
+                <span class="material-symbols-outlined text-[14px] opacity-50">chevron_right</span>
+                <span class="text-sm font-semibold">Orders</span>
+            </div>
             <h1 class="text-2xl font-semibold text-center">Previous Orders</h1>
         </div>
         <div id="orders-area" class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
+            <div class="loader">
+                <div class="loader-spinner"></div>
+                <span class="loader-text">Loading orders...</span>
+            </div>
         </div>
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
@@ -29,7 +38,8 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="cart-badge absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1"></span>
+                <span style="display:none"
+                    class="cart-badge absolute -top-1 -right-2 bg-[#441a0e] border text-xs rounded-full px-1.5 py-.75 text-white"></span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>
@@ -101,7 +111,14 @@
             area.querySelectorAll(".reorder-btn").forEach(function (btn) {
                 btn.addEventListener("click", function () {
                     var items = JSON.parse(btn.dataset.order);
-                    items.forEach(function (it) { PickBrew.addToCart(it); });
+                    items.forEach(function (it) {
+                        it.size = it.size || "Medium";
+                        it.strength = it.strength || "Regular";
+                        it.flavor = it.flavor || "None";
+                        it.addons = it.addons || [];
+                        PickBrew.addToCart(it);
+                    });
+                    PickBrew.updateBadge();
                     PickBrew.showToast("Items added to cart!");
                 });
             });

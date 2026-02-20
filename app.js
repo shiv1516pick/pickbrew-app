@@ -22,10 +22,10 @@ var PickBrew = (function () {
     var existing = cart.find(function (c) {
       return (
         c.id === item.id &&
-        c.size === item.size &&
-        c.strength === item.strength &&
-        c.flavor === item.flavor &&
-        JSON.stringify(c.addons) === JSON.stringify(item.addons)
+        (c.size || "Medium") === (item.size || "Medium") &&
+        (c.strength || "Regular") === (item.strength || "Regular") &&
+        (c.flavor || "None") === (item.flavor || "None") &&
+        JSON.stringify(c.addons || []) === JSON.stringify(item.addons || [])
       );
     });
     if (existing) {

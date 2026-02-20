@@ -11,8 +11,16 @@
 </head>
 
 <body class="bg-black text-white">
-    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
+    <!-- Splash Screen (shown once per session) -->
+    <div id="splash" class="splash lg:hidden" style="display:none;">
+        <img src="images/logo.png" class="splash-logo" alt="PickBrew" />
+        <div class="splash-brand">PickBrew</div>
+        <p class="splash-powered">Powered by <span>PickBrew SQ</span></p>
+        <div class="splash-bar"></div>
+    </div>
+    <script>if(!sessionStorage.getItem("pb_splash")){document.getElementById("splash").style.display="";}</script>
 
+    <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
         <div class="relative shrink-0 h-56 bg-cover bg-center"
             style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')">
             <div class="absolute inset-0 bg-black/40"></div>
@@ -125,7 +133,8 @@
             </a>
             <a href="cart.html" class="nav-item relative">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="cart-badge absolute -top-1 -right-2 bg-[#af7b5c] text-xs rounded-full px-1"></span>
+                <span style="display:none"
+                    class="cart-badge absolute -top-1 -right-2 bg-[#441a0e] border text-xs rounded-full px-1.5 py-.75 text-white"></span>
             </a>
             <a href="profile.html" class="nav-item">
                 <span class="material-symbols-outlined">account_circle</span>
@@ -137,6 +146,19 @@
     </div>
     <script src="app.js"></script>
     <script src="index.js"></script>
+    <script>
+        (function () {
+            var splash = document.getElementById("splash");
+            if (!splash || splash.style.display === "none") return;
+            sessionStorage.setItem("pb_splash", "1");
+            setTimeout(function () {
+                splash.classList.add("fade-out");
+                splash.addEventListener("transitionend", function () {
+                    splash.remove();
+                });
+            }, 2500);
+        })();
+    </script>
 </body>
 
 </html>

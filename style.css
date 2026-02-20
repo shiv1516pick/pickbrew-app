@@ -44,3 +44,110 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Loader */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+}
+.loader-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #2a2a2a;
+  border-top-color: #af7b5c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.loader-text {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Splash Screen */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.splash.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+.splash-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: #fff;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: splashLogoIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+}
+@keyframes splashLogoIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.splash-brand {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: splashTextIn 0.6s ease 0.6s forwards;
+}
+.splash-powered {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #6b7280;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: splashTextIn 0.5s ease 0.9s forwards;
+}
+.splash-powered span {
+  color: #af7b5c;
+  font-weight: 600;
+}
+@keyframes splashTextIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.splash-bar {
+  position: absolute;
+  bottom: 80px;
+  width: 120px;
+  height: 3px;
+  background: #1e1e1e;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.splash-bar::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #af7b5c;
+  border-radius: 3px;
+  animation: splashProgress 1.8s ease 0.5s forwards;
+}
+@keyframes splashProgress {
+  to { width: 100%; }
+}

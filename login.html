@@ -12,7 +12,12 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-        <div class="h-44 shrink-0 bg-[#5a7479] flex flex-col items-center justify-center gap-2">
+        <div class="h-44 shrink-0 bg-[#5a7479] flex flex-col items-center justify-center gap-2 relative">
+            <div class="absolute top-4 left-0 flex items-center gap-1.5 px-5">
+                <a href="index.html" class="text-sm opacity-70">Home</a>
+                <span class="material-symbols-outlined text-[14px] opacity-50">chevron_right</span>
+                <span class="text-sm font-semibold">Sign In</span>
+            </div>
             <span class="material-symbols-outlined text-[48px]">local_cafe</span>
             <h1 class="text-2xl font-semibold">PickBrew</h1>
             <p class="text-sm opacity-80">Your favorite coffee, one tap away</p>
@@ -89,6 +94,7 @@
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
     <script src="app.js"></script>
+    <script src="index.js"></script>
     <script>
         function togglePassword(btn) {
             var input = btn.parentElement.querySelector('input');

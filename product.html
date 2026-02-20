@@ -25,7 +25,18 @@
             </button>
         </div>
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-8 flex-1 overflow-y-auto relative z-10">
-            <div class="px-6 pt-6 pb-6">
+            <div id="product-loader" class="loader" style="min-height:300px;">
+                <div class="loader-spinner"></div>
+                <span class="loader-text">Loading product...</span>
+            </div>
+            <div id="product-content" class="px-6 pt-6 pb-6" style="display:none;">
+                <div class="flex items-center gap-1.5 mb-4">
+                    <a href="index.html" class="text-xs text-gray-500">Home</a>
+                    <span class="material-symbols-outlined text-[12px] text-gray-600">chevron_right</span>
+                    <a href="menu.html" class="text-xs text-gray-500">Menu</a>
+                    <span class="material-symbols-outlined text-[12px] text-gray-600">chevron_right</span>
+                    <span id="breadcrumb-product" class="text-xs text-[#c8a27a]">Brewed Coffee</span>
+                </div>
                 <div class="flex justify-between items-start mb-1">
                     <h1 id="product-name" class="text-xl font-semibold">Brewed Coffee</h1>
                     <span id="base-price-display" class="text-xl font-semibold">$4.29</span>
@@ -157,7 +168,7 @@
                 "espresso-shot": { name: "Espresso Shot", price: 3.29, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Single or double shot" },
                 "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1551030173-122aabc4489c", desc: "Espresso with hot water" },
                 "caramel-latte": { name: "Caramel Latte", price: 5.49, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", desc: "Espresso with steamed milk & caramel" },
-                "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Double shot with foamed milk" },
+                "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1534778101976-62847782c213", desc: "Double shot with foamed milk" },
                 "iced-mocha": { name: "Iced Mocha", price: 5.99, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d", desc: "Chilled espresso with chocolate & milk" },
                 "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese" },
                 "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd", desc: "Freshly baked flaky croissant" }
@@ -169,7 +180,10 @@
             document.getElementById("product-name").textContent = product.name;
             document.getElementById("product-desc").textContent = product.desc;
             document.getElementById("base-price-display").textContent = "$" + product.price.toFixed(2);
+            document.getElementById("breadcrumb-product").textContent = product.name;
             document.title = product.name + " — PickBrew";
+            document.getElementById("product-loader").style.display = "none";
+            document.getElementById("product-content").style.display = "";
             var state = { size: "Medium", strength: "Regular", flavor: "None", addons: [], qty: 1 };
             var basePrice = product.price;
             var ACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
