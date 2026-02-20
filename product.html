@@ -30,6 +30,8 @@
                 <span class="loader-text">Loading product...</span>
             </div>
             <div id="product-content" class="px-6 pt-6 pb-6" style="display:none;">
+
+                <!-- details of the product is here -->
                 <div class="flex items-center gap-1.5 mb-4">
                     <a href="index.html" class="text-xs text-gray-500">Home</a>
                     <span class="material-symbols-outlined text-[12px] text-gray-600">chevron_right</span>
@@ -42,8 +44,8 @@
                     <span id="base-price-display" class="text-xl font-semibold">$4.29</span>
                 </div>
                 <p id="product-desc" class="text-sm text-gray-400 mb-6">Fresh brewed house blend coffee</p>
-                <div class="mb-5">
-                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Size</h3>
+                <div class="mb-7">
+                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Variations</h3>
                     <div class="grid grid-cols-4 gap-2 option-group" data-option="size">
                         <button data-value="Small" data-extra="0"
                             class="opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300">
@@ -67,91 +69,104 @@
                         </button>
                     </div>
                 </div>
-                <div class="mb-5">
-                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Strength</h3>
-                    <div class="flex gap-3 option-group" data-option="strength">
-                        <button data-value="Regular" data-extra="0"
-                            class="opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">Regular</button>
-                        <button data-value="Extra Strong" data-extra="0"
-                            class="opt-btn flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Extra
-                            Strong</button>
+                <div class="mb-7">
+                    <h3 class="text-sm font-semibold text-gray-300 border-b border-gray-600 pb-5">Add-ins</h3>
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold">Milks and Creamers</h4>
+                            <span
+                                class="material-symbols-outlined text-white text-[20px] addin-arrow">chevron_right</span>
+                        </div>
+                        <div class="addin-body pt-3 hidden">
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">Oat Milk</h4>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-gray-400">$0.50</span>
+                                    <input type="checkbox" class="chk" />
+                                </div>
+                            </div>
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">1% Milk</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-5">
-                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Flavor</h3>
-                    <div class="flex gap-2 flex-wrap option-group" data-option="flavor">
-                        <button data-value="None" data-extra="0"
-                            class="opt-btn px-4 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black">None</button>
-                        <button data-value="Vanilla" data-extra="0.60"
-                            class="opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Vanilla</button>
-                        <button data-value="Caramel" data-extra="0.60"
-                            class="opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Caramel</button>
-                        <button data-value="Hazelnut" data-extra="0.60"
-                            class="opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Hazelnut</button>
-                        <button data-value="Mocha" data-extra="0.60"
-                            class="opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Mocha</button>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Add-ons</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center justify-between">
-                            <span class="text-sm text-gray-300">Whipped Cream</span>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs text-gray-400">+$0.60</span>
-                                <input type="checkbox" data-addon="Whipped Cream" data-extra="0.60"
-                                    class="addon-chk w-5 h-5 rounded accent-[#af7b5c]" />
-                            </div>
-                        </label>
-                        <label class="flex items-center justify-between">
-                            <span class="text-sm text-gray-300">Extra Shot</span>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs text-gray-400">+$0.80</span>
-                                <input type="checkbox" data-addon="Extra Shot" data-extra="0.80"
-                                    class="addon-chk w-5 h-5 rounded accent-[#af7b5c]" />
-                            </div>
-                        </label>
-                        <label class="flex items-center justify-between">
-                            <span class="text-sm text-gray-300">Oat Milk</span>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs text-gray-400">+$0.70</span>
-                                <input type="checkbox" data-addon="Oat Milk" data-extra="0.70"
-                                    class="addon-chk w-5 h-5 rounded accent-[#af7b5c]" />
-                            </div>
-                        </label>
-                        <label class="flex items-center justify-between">
-                            <span class="text-sm text-gray-300">Caramel Drizzle</span>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs text-gray-400">+$0.50</span>
-                                <input type="checkbox" data-addon="Caramel Drizzle" data-extra="0.50"
-                                    class="addon-chk w-5 h-5 rounded accent-[#af7b5c]" />
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <h3 class="text-sm font-semibold text-gray-300 mb-3">Special Instructions</h3>
-                    <textarea id="note-input" rows="2" placeholder="e.g. Extra hot, no sugar..."
-                        class="w-full bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]"></textarea>
-                </div>
 
-            </div>
-        </div>
-        <div class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-4">
-                    <button id="qty-minus"
-                        class="w-8 h-8 rounded-full bg-[#af7b5c] text-black flex items-center justify-center text-lg font-bold">−</button>
-                    <span id="qty-display" class="text-lg font-semibold">1</span>
-                    <button id="qty-plus"
-                        class="w-8 h-8 rounded-full bg-[#af7b5c] text-black flex items-center justify-center text-lg font-bold">+</button>
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold">Sweetness Level</h4>
+                            <span
+                                class="material-symbols-outlined text-white text-[20px] addin-arrow">chevron_right</span>
+                        </div>
+                        <div class="addin-body pt-3 hidden">
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">100% Sweet</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">50% Sweet</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">25% Sweet</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">Extra Sweet</h4>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-gray-400">$0.25</span>
+                                    <input type="checkbox" class="chk" />
+                                </div>
+                            </div>
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">No Sweet</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold">Add Whipped Cream</h4>
+                            <span
+                                class="material-symbols-outlined text-white text-[20px] addin-arrow">chevron_right</span>
+                        </div>
+                        <div class="addin-body pt-3 hidden">
+                            <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
+                                <h4 class="text-sm tracking-wide">Add Whipped Cream</h4>
+                                <input type="checkbox" class="chk" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold">Special Instructions</h4>
+                            <span class="material-symbols-outlined text-white text-[20px] addin-arrow">chevron_right</span>
+                        </div>
+                        <div class="addin-body pt-3 hidden">
+                            <textarea id="note-input" rows="2" placeholder="e.g. Extra hot, no sugar..."
+                                class="w-full bg-black border border-gray-600 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#af7b5c]"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="py-4 pl-2">
+                        <h4 class="font-semibold mb-3">Quantity</h4>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-2 bg-[#3f444b] rounded-full p-1 text-sm">
+                                <button id="qty-minus"
+                                    class="flex justify-center items-center p-0.5 rounded-full bg-[#4f6972]"><span
+                                        class="material-symbols-outlined">check_indeterminate_small</span></button>
+                                <span id="qty-display" class="text-lg font-semibold min-w-[24px] text-center">1</span>
+                                <button id="qty-plus"
+                                    class="flex justify-center items-center p-0.5 rounded-full bg-[#4f6972]"><span
+                                        class="material-symbols-outlined">add</span></button>
+                            </div>
+                            <button id="add-to-cart-btn" class="rounded-full bg-[#af7b5c] text-sm py-3 px-7">Add to Cart
+                                <span id="total-price" class="font-semibold pl-3">$4.29</span></button>
+                        </div>
+                    </div>
                 </div>
-                <span id="total-price" class="text-lg font-semibold">$4.29</span>
             </div>
-            <button id="add-to-cart-btn"
-                class="w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base">
-                Add to Cart
-            </button>
         </div>
 
     </div>
@@ -186,10 +201,6 @@
             document.getElementById("product-content").style.display = "";
             var state = { size: "Medium", strength: "Regular", flavor: "None", addons: [], qty: 1 };
             var basePrice = product.price;
-            var ACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
-            var INACTIVE = "opt-btn flex-1 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300";
-            var ACTIVE_PILL = "opt-btn px-4 py-2 rounded-full text-sm font-medium bg-[#af7b5c] text-black";
-            var INACTIVE_PILL = "opt-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300";
             var ACTIVE_SIZE = "opt-btn size-card py-3 rounded-xl text-center bg-[#af7b5c] text-black";
             var INACTIVE_SIZE = "opt-btn size-card py-3 rounded-xl text-center border border-gray-600 text-gray-300";
 
@@ -199,9 +210,6 @@
                     var active = g.querySelector(".opt-btn.bg-\\[\\#af7b5c\\]") || g.querySelector('[class*="bg-[#af7b5c]"]');
                     if (active) extra += parseFloat(active.dataset.extra || 0);
                 });
-                document.querySelectorAll(".addon-chk:checked").forEach(function (c) {
-                    extra += parseFloat(c.dataset.extra || 0);
-                });
                 var unitPrice = basePrice + extra;
                 var total = unitPrice * state.qty;
                 document.getElementById("total-price").textContent = "$" + total.toFixed(2);
@@ -209,24 +217,14 @@
             document.querySelectorAll(".option-group").forEach(function (group) {
                 group.querySelectorAll(".opt-btn").forEach(function (btn) {
                     btn.addEventListener("click", function () {
-                        var isSizeCard = btn.classList.contains("size-card");
-                        var isFlexBtn = btn.classList.contains("flex-1");
                         group.querySelectorAll(".opt-btn").forEach(function (b) {
-                            if (b.classList.contains("size-card")) b.className = INACTIVE_SIZE;
-                            else if (b.classList.contains("flex-1")) b.className = INACTIVE;
-                            else b.className = INACTIVE_PILL;
+                            b.className = INACTIVE_SIZE;
                         });
-                        if (isSizeCard) btn.className = ACTIVE_SIZE;
-                        else if (isFlexBtn) btn.className = ACTIVE;
-                        else btn.className = ACTIVE_PILL;
+                        btn.className = ACTIVE_SIZE;
                         state[group.dataset.option] = btn.dataset.value;
                         calcPrice();
                     });
                 });
-            });
-
-            document.querySelectorAll(".addon-chk").forEach(function (chk) {
-                chk.addEventListener("change", calcPrice);
             });
 
             document.getElementById("qty-minus").addEventListener("click", function () {
@@ -250,15 +248,16 @@
 
             document.getElementById("add-to-cart-btn").addEventListener("click", function () {
                 var addons = [];
-                document.querySelectorAll(".addon-chk:checked").forEach(function (c) { addons.push(c.dataset.addon); });
+                document.querySelectorAll(".chk:checked").forEach(function (c) {
+                    var label = c.closest(".bg-black");
+                    if (label) addons.push(label.querySelector("h4").textContent.trim());
+                });
                 var extra = 0;
                 document.querySelectorAll(".option-group").forEach(function (g) {
                     var active = g.querySelector('[class*="bg-[#af7b5c]"]');
                     if (active) extra += parseFloat(active.dataset.extra || 0);
                 });
-                document.querySelectorAll(".addon-chk:checked").forEach(function (c) {
-                    extra += parseFloat(c.dataset.extra || 0);
-                });
+                var noteEl = document.getElementById("note-input");
                 PickBrew.addToCart({
                     id: pid,
                     name: product.name,
@@ -269,13 +268,32 @@
                     strength: state.strength,
                     flavor: state.flavor,
                     addons: addons,
-                    note: document.getElementById("note-input").value,
+                    note: noteEl ? noteEl.value : "",
                     qty: state.qty
                 });
                 PickBrew.showToast("Added " + state.qty + "x " + product.name + " to cart");
                 setTimeout(function () { window.location.href = "cart.html"; }, 800);
             });
             calcPrice();
+
+            // Add-ins accordion toggle
+            document.querySelectorAll(".addin-toggle").forEach(function (toggle) {
+                toggle.addEventListener("click", function (e) {
+                    if (e.target.classList.contains("chk")) return;
+                    var body = toggle.querySelector(".addin-body");
+                    var isOpen = toggle.classList.contains("open");
+                    // Close all
+                    document.querySelectorAll(".addin-toggle").forEach(function (t) {
+                        t.classList.remove("open");
+                        t.querySelector(".addin-body").classList.add("hidden");
+                    });
+                    // Open clicked if it was closed
+                    if (!isOpen) {
+                        toggle.classList.add("open");
+                        body.classList.remove("hidden");
+                    }
+                });
+            });
         });
     </script>
 </body>
