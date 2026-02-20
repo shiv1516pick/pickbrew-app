@@ -43,7 +43,11 @@
                     <h1 id="product-name" class="text-xl font-semibold">Brewed Coffee</h1>
                     <span id="base-price-display" class="text-xl font-semibold">$4.29</span>
                 </div>
-                <p id="product-desc" class="text-sm text-gray-400 mb-6">Fresh brewed house blend coffee</p>
+                <p id="product-desc" class="text-sm text-gray-400 mb-3">Fresh brewed house blend coffee</p>
+                <div id="prep-time" class="inline-flex items-center gap-1.5 bg-[#1e1e1e] border border-gray-700 rounded-full px-3 py-1.5 mb-6">
+                    <span class="material-symbols-outlined text-[#af7b5c] text-[16px]">schedule</span>
+                    <span class="text-xs text-gray-300">Prep time: <span id="prep-value" class="text-white font-semibold">~5 min</span></span>
+                </div>
                 <div class="mb-7">
                     <h3 class="text-sm font-semibold text-gray-300 mb-3">Variations</h3>
                     <div class="grid grid-cols-4 gap-2 option-group" data-option="size">
@@ -82,12 +86,12 @@
                                 <h4 class="text-sm tracking-wide">Oat Milk</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.50</span>
-                                    <input type="checkbox" class="chk" />
+                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">1% Milk</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
                             </div>
                         </div>
                     </div>
@@ -101,26 +105,26 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">100% Sweet</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="100% Sweet" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">50% Sweet</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="50% Sweet" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">25% Sweet</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="25% Sweet" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Extra Sweet</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" />
+                                    <input type="checkbox" class="chk" data-addon="Extra Sweet" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">No Sweet</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="No Sweet" data-extra="0" />
                             </div>
                         </div>
                     </div>
@@ -133,7 +137,7 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Add Whipped Cream</h4>
-                                <input type="checkbox" class="chk" />
+                                <input type="checkbox" class="chk" data-addon="Whipped Cream" data-extra="0" />
                             </div>
                         </div>
                     </div>
@@ -178,15 +182,15 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var products = {
-                "brewed-coffee": { name: "Brewed Coffee", price: 4.29, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", desc: "Fresh brewed house blend coffee" },
-                "vanilla-cold-brew": { name: "Vanilla Cold Brew", price: 4.79, image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735", desc: "Slow-steeped cold brew with vanilla" },
-                "espresso-shot": { name: "Espresso Shot", price: 3.29, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Single or double shot" },
-                "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1551030173-122aabc4489c", desc: "Espresso with hot water" },
-                "caramel-latte": { name: "Caramel Latte", price: 5.49, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", desc: "Espresso with steamed milk & caramel" },
-                "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1534778101976-62847782c213", desc: "Double shot with foamed milk" },
-                "iced-mocha": { name: "Iced Mocha", price: 5.99, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d", desc: "Chilled espresso with chocolate & milk" },
-                "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese" },
-                "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd", desc: "Freshly baked flaky croissant" }
+                "brewed-coffee": { name: "Brewed Coffee", price: 4.29, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", desc: "Fresh brewed house blend coffee", prep: "3–5 min" },
+                "vanilla-cold-brew": { name: "Vanilla Cold Brew", price: 4.79, image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735", desc: "Slow-steeped cold brew with vanilla", prep: "2–4 min" },
+                "espresso-shot": { name: "Espresso Shot", price: 3.29, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Single or double shot", prep: "1–2 min" },
+                "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1551030173-122aabc4489c", desc: "Espresso with hot water", prep: "2–3 min" },
+                "caramel-latte": { name: "Caramel Latte", price: 5.49, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", desc: "Espresso with steamed milk & caramel", prep: "4–6 min" },
+                "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1534778101976-62847782c213", desc: "Double shot with foamed milk", prep: "3–5 min" },
+                "iced-mocha": { name: "Iced Mocha", price: 5.99, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d", desc: "Chilled espresso with chocolate & milk", prep: "4–6 min" },
+                "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese", prep: "3–5 min" },
+                "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd", desc: "Freshly baked flaky croissant", prep: "2–3 min" }
             };
             var params = new URLSearchParams(window.location.search);
             var pid = params.get("id") || "brewed-coffee";
@@ -196,6 +200,7 @@
             document.getElementById("product-desc").textContent = product.desc;
             document.getElementById("base-price-display").textContent = "$" + product.price.toFixed(2);
             document.getElementById("breadcrumb-product").textContent = product.name;
+            document.getElementById("prep-value").textContent = "~" + product.prep;
             document.title = product.name + " — PickBrew";
             document.getElementById("product-loader").style.display = "none";
             document.getElementById("product-content").style.display = "";
@@ -209,6 +214,9 @@
                 document.querySelectorAll(".option-group").forEach(function (g) {
                     var active = g.querySelector(".opt-btn.bg-\\[\\#af7b5c\\]") || g.querySelector('[class*="bg-[#af7b5c]"]');
                     if (active) extra += parseFloat(active.dataset.extra || 0);
+                });
+                document.querySelectorAll(".chk:checked").forEach(function (c) {
+                    extra += parseFloat(c.dataset.extra || 0);
                 });
                 var unitPrice = basePrice + extra;
                 var total = unitPrice * state.qty;
@@ -246,22 +254,28 @@
                 PickBrew.showToast(PickBrew.isFavorite(pid) ? "Added to favorites" : "Removed from favorites");
             });
 
+            // Live price update when checkboxes change
+            document.querySelectorAll(".chk").forEach(function (chk) {
+                chk.addEventListener("change", function () { calcPrice(); });
+            });
+
             document.getElementById("add-to-cart-btn").addEventListener("click", function () {
                 var addons = [];
+                var addonExtra = 0;
                 document.querySelectorAll(".chk:checked").forEach(function (c) {
-                    var label = c.closest(".bg-black");
-                    if (label) addons.push(label.querySelector("h4").textContent.trim());
+                    addons.push(c.dataset.addon);
+                    addonExtra += parseFloat(c.dataset.extra || 0);
                 });
-                var extra = 0;
+                var sizeExtra = 0;
                 document.querySelectorAll(".option-group").forEach(function (g) {
                     var active = g.querySelector('[class*="bg-[#af7b5c]"]');
-                    if (active) extra += parseFloat(active.dataset.extra || 0);
+                    if (active) sizeExtra += parseFloat(active.dataset.extra || 0);
                 });
                 var noteEl = document.getElementById("note-input");
                 PickBrew.addToCart({
                     id: pid,
                     name: product.name,
-                    price: basePrice + extra,
+                    price: basePrice + sizeExtra + addonExtra,
                     image: product.image,
                     desc: product.desc,
                     size: state.size,
@@ -279,7 +293,7 @@
             // Add-ins accordion toggle
             document.querySelectorAll(".addin-toggle").forEach(function (toggle) {
                 toggle.addEventListener("click", function (e) {
-                    if (e.target.classList.contains("chk")) return;
+                    if (e.target.classList.contains("chk") || e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
                     var body = toggle.querySelector(".addin-body");
                     var isOpen = toggle.classList.contains("open");
                     // Close all
