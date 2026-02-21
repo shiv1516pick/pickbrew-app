@@ -78,7 +78,8 @@
                 <div class="mb-7">
                     <h3 class="text-sm font-semibold text-gray-300 border-b border-gray-600 pb-5">Add-ins</h3>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,drip,coffee-classics">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Strength Preferences</h4>
                             <span
@@ -110,7 +111,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="food,breakfast">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Extra</h4>
                             <span
@@ -121,20 +123,21 @@
                                 <h4 class="text-sm tracking-wide">Cheese</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$2.00</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Cheese" data-extra="2.00" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Butter</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$3.00</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Butter" data-extra="3.00" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="espresso-drinks,lattes,hot-drinks,iced-drinks,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Chocolate Mods</h4>
                             <span
@@ -145,20 +148,21 @@
                                 <h4 class="text-sm tracking-wide">Yummy</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.50</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Yummy" data-extra="0.50" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Tasty</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.20</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Tasty" data-extra="0.20" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,coffee-classics,drip,hot-coffee-tea,hot-drinks,iced-drinks,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Milks</h4>
                             <span
@@ -167,38 +171,38 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Breve</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Breve" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Whole Milk</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Whole Milk" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Almond Milk</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Almond Milk" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Oat Milk</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Cashew Milk</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Cashew Milk" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Coconut Milk</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Coconut Milk" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
@@ -207,12 +211,13 @@
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">2% Milk</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="2% Milk" data-extra="0" />
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,coffee-classics,drip,hot-coffee-tea,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Decaf Option</h4>
                             <span
@@ -221,19 +226,21 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Make Decaf</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Make Decaf" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Extra Shot of Decaf Espresso</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.75</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Extra Shot Decaf Espresso"
+                                        data-extra="0.75" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,coffee-classics,drip,hot-coffee-tea,hot-drinks,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Milks and Creamers</h4>
                             <span
@@ -254,7 +261,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,coffee-classics,iced-drinks,hot-drinks,tea-lattes,teas,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Hot/Iced/Blended</h4>
                             <span
@@ -263,23 +271,24 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Hot</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Hot" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Iced</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Iced" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Blended</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$1.00</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Blended" data-extra="1.00" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="espresso,espresso-drinks,lattes,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Espresso</h4>
                             <span
@@ -290,34 +299,35 @@
                                 <h4 class="text-sm tracking-wide">Add Shot</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.75</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Add Shot" data-extra="0.75" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Add 2 Shot</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$1.00</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Add 2 Shot" data-extra="1.00" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Add 3 Shot</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$1.50</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Add 3 Shot" data-extra="1.50" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Add 4 Shot</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$2.00</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Add 4 Shot" data-extra="2.00" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,iced-drinks,lattes,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Add Ice Amount</h4>
                             <span
@@ -326,19 +336,20 @@
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Light Ice</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Light Ice" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Extra Ice</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.50</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Extra Ice" data-extra="0.50" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,hot-drinks,iced-drinks,coffee-classics,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Add Topping</h4>
                             <span
@@ -349,31 +360,32 @@
                                 <h4 class="text-sm tracking-wide">Cinnamon Powder</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Cinnamon Powder" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Cocoa Powder</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Cocoa Powder" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Sea Salt</h4>
-                                <input type="checkbox" class="chk" data-addon="1% Milk" data-extra="0" />
+                                <input type="checkbox" class="chk" data-addon="Sea Salt" data-extra="0" />
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">Honey</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Oat Milk" data-extra="0.50" />
+                                    <input type="checkbox" class="chk" data-addon="Honey" data-extra="0.25" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,hot-drinks,iced-drinks,tea-lattes,teas,coffee-classics,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Add Flavor</h4>
                             <span
@@ -431,7 +443,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="food,breakfast">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Spread</h4>
                             <span
@@ -464,7 +477,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,hot-drinks,iced-drinks,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Add Drizzle</h4>
                             <span
@@ -472,32 +486,33 @@
                         </div>
                         <div class="addin-body pt-3 hidden">
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
-                                <h4 class="text-sm tracking-wide">Caramel Dizzle</h4>
+                                <h4 class="text-sm tracking-wide">Caramel Drizzle</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Garden Veg. Cream Cheese"
-                                        data-extra="3.00" />
+                                    <input type="checkbox" class="chk" data-addon="Caramel Drizzle" data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
-                                <h4 class="text-sm tracking-wide">Chocolate Dizzle</h4>
+                                <h4 class="text-sm tracking-wide">Chocolate Drizzle</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Peanut Butter" data-extra="1.00" />
+                                    <input type="checkbox" class="chk" data-addon="Chocolate Drizzle"
+                                        data-extra="0.25" />
                                 </div>
                             </div>
                             <div class="bg-black py-3 px-4 rounded flex justify-between items-center my-2">
                                 <h4 class="text-sm tracking-wide">White Chocolate Drizzle</h4>
                                 <div class="flex items-center gap-2">
                                     <span class="text-xs text-gray-400">$0.25</span>
-                                    <input type="checkbox" class="chk" data-addon="Chive Cream Cheese"
-                                        data-extra="2.00" />
+                                    <input type="checkbox" class="chk" data-addon="White Chocolate Drizzle"
+                                        data-extra="0.25" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,hot-drinks,iced-drinks,teas,tea-lattes,coffee-classics,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Sweetness Level</h4>
                             <span
@@ -530,7 +545,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="coffee,espresso,espresso-drinks,lattes,hot-drinks,iced-drinks,seasonal">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Add Whipped Cream</h4>
                             <span
@@ -544,7 +560,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="food,breakfast">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Breakfast Mods</h4>
                             <span
@@ -561,7 +578,8 @@
                         </div>
                     </div>
 
-                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer">
+                    <div class="addin-toggle py-4 border-b border-gray-600 pl-2 flex flex-col cursor-pointer"
+                        data-categories="breakfast,coffee,coffee-classics,drip,espresso,espresso-drinks,food,hot-coffee-tea,hot-drinks,iced-drinks,lattes,seasonal,tea-lattes,teas">
                         <div class="flex justify-between items-center">
                             <h4 class="font-semibold">Special Instructions</h4>
                             <span
@@ -601,20 +619,9 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var products = {
-                "brewed-coffee": { name: "Brewed Coffee", price: 4.29, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", desc: "Fresh brewed house blend coffee", prep: "5-10 min" },
-                "vanilla-cold-brew": { name: "Vanilla Cold Brew", price: 4.79, image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735", desc: "Slow-steeped cold brew with vanilla", prep: "5-8 min" },
-                "espresso-shot": { name: "Espresso Shot", price: 3.29, image: "https://images.unsplash.com/photo-1521305916504-4a1121188589", desc: "Single or double shot", prep: "10-15 min" },
-                "americano": { name: "Americano", price: 3.99, image: "https://images.unsplash.com/photo-1551030173-122aabc4489c", desc: "Espresso with hot water", prep: "5–15 min" },
-                "caramel-latte": { name: "Caramel Latte", price: 5.49, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", desc: "Espresso with steamed milk & caramel", prep: "10–12 min" },
-                "cappuccino": { name: "Cappuccino", price: 5.19, image: "https://images.unsplash.com/photo-1534778101976-62847782c213", desc: "Double shot with foamed milk", prep: "13–15 min" },
-                "iced-mocha": { name: "Iced Mocha", price: 5.99, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d", desc: "Chilled espresso with chocolate & milk", prep: "14–16 min" },
-                "bagel-cream-cheese": { name: "Bagel & Cream Cheese", price: 3.60, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", desc: "Toasted bagel with cream cheese", prep: "13–15 min" },
-                "butter-croissant": { name: "Butter Croissant", price: 3.25, image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd", desc: "Freshly baked flaky croissant", prep: "12–15 min" }
-            };
             var params = new URLSearchParams(window.location.search);
             var pid = params.get("id") || "brewed-coffee";
-            var product = products[pid] || products["brewed-coffee"];
+            var product = PickBrew.getProduct(pid) || PickBrew.getProduct("brewed-coffee");
             document.getElementById("hero-img").src = product.image;
             document.getElementById("product-name").textContent = product.name;
             document.getElementById("product-desc").textContent = product.desc;
@@ -622,6 +629,24 @@
             document.getElementById("breadcrumb-product").textContent = product.name;
             document.getElementById("prep-value").textContent = "~" + product.prep;
             document.title = product.name + " — PickBrew";
+
+            // Show/hide add-in sections based on product category
+            var productCategory = product.category;
+            document.querySelectorAll(".addin-toggle[data-categories]").forEach(function (section) {
+                var cats = section.dataset.categories.split(",");
+                if (cats.indexOf(productCategory) > -1) {
+                    section.style.display = "";
+                } else {
+                    section.style.display = "none";
+                }
+            });
+
+            // Hide size variations for food/breakfast items (they don't have drink sizes)
+            if (PickBrew.isFoodCategory(productCategory)) {
+                var variationsSection = document.querySelector(".option-group[data-option='size']");
+                if (variationsSection) variationsSection.closest(".mb-7").style.display = "none";
+            }
+
             document.getElementById("product-loader").style.display = "none";
             document.getElementById("product-content").style.display = "";
             var state = { size: "Medium", strength: "Regular", flavor: "None", addons: [], qty: 1 };
@@ -631,12 +656,19 @@
 
             function calcPrice() {
                 var extra = 0;
-                document.querySelectorAll(".option-group").forEach(function (g) {
-                    var active = g.querySelector(".opt-btn.bg-\\[\\#af7b5c\\]") || g.querySelector('[class*="bg-[#af7b5c]"]');
-                    if (active) extra += parseFloat(active.dataset.extra || 0);
-                });
-                document.querySelectorAll(".chk:checked").forEach(function (c) {
-                    extra += parseFloat(c.dataset.extra || 0);
+                // Only count size extras for non-food items
+                if (!PickBrew.isFoodCategory(productCategory)) {
+                    document.querySelectorAll(".option-group").forEach(function (g) {
+                        var active = g.querySelector(".opt-btn.bg-\\[\\#af7b5c\\]") || g.querySelector('[class*="bg-[#af7b5c]"]');
+                        if (active) extra += parseFloat(active.dataset.extra || 0);
+                    });
+                }
+                // Only count visible (category-matched) checkboxes
+                document.querySelectorAll(".addin-toggle[data-categories]").forEach(function (section) {
+                    if (section.style.display === "none") return;
+                    section.querySelectorAll(".chk:checked").forEach(function (c) {
+                        extra += parseFloat(c.dataset.extra || 0);
+                    });
                 });
                 var unitPrice = basePrice + extra;
                 var total = unitPrice * state.qty;
@@ -682,15 +714,21 @@
             document.getElementById("add-to-cart-btn").addEventListener("click", function () {
                 var addons = [];
                 var addonExtra = 0;
-                document.querySelectorAll(".chk:checked").forEach(function (c) {
-                    addons.push(c.dataset.addon);
-                    addonExtra += parseFloat(c.dataset.extra || 0);
+                // Only collect from visible sections
+                document.querySelectorAll(".addin-toggle[data-categories]").forEach(function (section) {
+                    if (section.style.display === "none") return;
+                    section.querySelectorAll(".chk:checked").forEach(function (c) {
+                        addons.push(c.dataset.addon);
+                        addonExtra += parseFloat(c.dataset.extra || 0);
+                    });
                 });
                 var sizeExtra = 0;
-                document.querySelectorAll(".option-group").forEach(function (g) {
-                    var active = g.querySelector('[class*="bg-[#af7b5c]"]');
-                    if (active) sizeExtra += parseFloat(active.dataset.extra || 0);
-                });
+                if (!PickBrew.isFoodCategory(productCategory)) {
+                    document.querySelectorAll(".option-group").forEach(function (g) {
+                        var active = g.querySelector('[class*="bg-[#af7b5c]"]');
+                        if (active) sizeExtra += parseFloat(active.dataset.extra || 0);
+                    });
+                }
                 var noteEl = document.getElementById("note-input");
                 PickBrew.addToCart({
                     id: pid,
@@ -698,7 +736,7 @@
                     price: basePrice + sizeExtra + addonExtra,
                     image: product.image,
                     desc: product.desc,
-                    size: state.size,
+                    size: PickBrew.isFoodCategory(productCategory) ? "Regular" : state.size,
                     strength: state.strength,
                     flavor: state.flavor,
                     addons: addons,

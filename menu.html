@@ -22,393 +22,14 @@
         </div>
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 flex flex-col overflow-hidden">
             <div class="shrink-0 px-5 pt-5 pb-3">
-                <div class="flex gap-2 overflow-x-auto">
-                    <button data-category="all"
-                        class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium bg-[#af7b5c] text-black">All</button>
-                    <button data-category="coffee"
-                        class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Coffee</button>
-                    <button data-category="espresso"
-                        class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Espresso</button>
-                    <button data-category="espresso-drinks"
-                        class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Espresso
-                        Drinks</button>
-                    <button data-category="food"
-                        class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">Food</button>
-                </div>
+                <div id="cat-tabs" class="flex gap-2 overflow-x-auto"></div>
             </div>
             <div class="px-6 pb-4 flex-1 overflow-y-auto">
                 <div id="menu-loader" class="loader" style="min-height:200px;">
                     <div class="loader-spinner"></div>
                     <span class="loader-text">Loading menu...</span>
                 </div>
-                <div id="menu-items" style="display:none;">
-                <div data-section="coffee" class="menu-section">
-                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Coffee</h3>
-                    <div class="menu-item block mb-6" data-id="brewed-coffee" data-name="Brewed Coffee"
-                        data-price="4.29" data-image="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                        data-desc="Fresh brewed house blend">
-                        <a href="product.html?id=brewed-coffee" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Brewed Coffee</h3>
-                                        <p class="text-sm text-gray-400">Fresh brewed house blend</p>
-                                    </div>
-                                    <span class="font-semibold">$4.29</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="brewed-coffee">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-
-                    <div class="menu-item block mb-6" data-id="vanilla-cold-brew" data-name="Vanilla Cold Brew"
-                        data-price="4.79" data-image="https://images.unsplash.com/photo-1461023058943-07fcbe16d735"
-                        data-desc="Slow-steeped cold brew with vanilla">
-                        <a href="product.html?id=vanilla-cold-brew" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Vanilla Cold Brew</h3>
-                                        <p class="text-sm text-gray-400">Slow-steeped cold brew with vanilla</p>
-                                    </div>
-                                    <span class="font-semibold">$4.79</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="vanilla-cold-brew">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                </div>
-                <div data-section="espresso" class="menu-section">
-                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Espresso</h3>
-                    <div class="menu-item block mb-6" data-id="espresso-shot" data-name="Espresso Shot"
-                        data-price="3.29" data-image="https://images.unsplash.com/photo-1521305916504-4a1121188589"
-                        data-desc="Single or double shot">
-                        <a href="product.html?id=espresso-shot" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Espresso Shot</h3>
-                                        <p class="text-sm text-gray-400">Single or double shot</p>
-                                    </div>
-                                    <span class="font-semibold">$3.29</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Single | Double</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="espresso-shot">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                    <div class="menu-item block mb-6" data-id="americano" data-name="Americano" data-price="3.99"
-                        data-image="https://images.unsplash.com/photo-1551030173-122aabc4489c"
-                        data-desc="Espresso with hot water">
-                        <a href="product.html?id=americano" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1551030173-122aabc4489c"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Americano</h3>
-                                        <p class="text-sm text-gray-400">Espresso with hot water</p>
-                                    </div>
-                                    <span class="font-semibold">$3.99</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="americano">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                </div>
-                <div data-section="espresso-drinks" class="menu-section">
-                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Espresso Drinks</h3>
-                    <div class="menu-item block mb-6" data-id="caramel-latte" data-name="Caramel Latte"
-                        data-price="5.49" data-image="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                        data-desc="Espresso with steamed milk & caramel">
-                        <a href="product.html?id=caramel-latte" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Caramel Latte</h3>
-                                        <p class="text-sm text-gray-400">Espresso with steamed milk & caramel</p>
-                                    </div>
-                                    <span class="font-semibold">$5.49</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="caramel-latte">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                    <div class="menu-item block mb-6" data-id="cappuccino" data-name="Cappuccino" data-price="5.19"
-                        data-image="https://images.unsplash.com/photo-1534778101976-62847782c213"
-                        data-desc="Double shot with foamed milk">
-                        <a href="product.html?id=cappuccino" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Cappuccino</h3>
-                                        <p class="text-sm text-gray-400">Double shot with foamed milk</p>
-                                    </div>
-                                    <span class="font-semibold">$5.19</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="cappuccino">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                    <div class="menu-item block mb-6" data-id="iced-mocha" data-name="Iced Mocha" data-price="5.99"
-                        data-image="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
-                        data-desc="Chilled espresso with chocolate & milk">
-                        <a href="product.html?id=iced-mocha" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Iced Mocha</h3>
-                                        <p class="text-sm text-gray-400">Chilled espresso with chocolate & milk</p>
-                                    </div>
-                                    <span class="font-semibold">$5.99</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Regular | Large</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="iced-mocha">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-                </div>
-                <div data-section="food" class="menu-section">
-                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Food</h3>
-
-                    <div class="menu-item block mb-6" data-id="bagel-cream-cheese" data-name="Bagel & Cream Cheese"
-                        data-price="3.60" data-image="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0"
-                        data-desc="Toasted bagel with cream cheese">
-                        <a href="product.html?id=bagel-cream-cheese" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Bagel & Cream Cheese</h3>
-                                        <p class="text-sm text-gray-400">Toasted bagel with cream cheese</p>
-                                    </div>
-                                    <span class="font-semibold">$3.60</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Plain | Everything</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="bagel-cream-cheese">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="border-gray-700 mt-6" />
-                    </div>
-
-                    <div class="menu-item block mb-6" data-id="butter-croissant" data-name="Butter Croissant"
-                        data-price="3.25" data-image="https://images.unsplash.com/photo-1530610476181-d83430b64dcd"
-                        data-desc="Freshly baked flaky croissant">
-                        <a href="product.html?id=butter-croissant" class="flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd"
-                                class="w-14 h-14 rounded-full object-cover" />
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold">Butter Croissant</h3>
-                                        <p class="text-sm text-gray-400">Freshly baked flaky croissant</p>
-                                    </div>
-                                    <span class="font-semibold">$3.25</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-3">
-                                    <span class="text-xs text-[#c8a27a]">Plain | Chocolate</span>
-                                    <div class="flex items-center gap-2">
-                                        <button
-                                            class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center"
-                                            data-id="butter-croissant">
-                                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
-                                        </button>
-                                        <div class="qty-controls flex items-center gap-2">
-                                            <button
-                                                class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold"
-                                                style="display:none;">−</button>
-                                            <span class="qty-count text-xs font-semibold min-w-[18px] text-center"
-                                                style="display:none;">0</span>
-                                            <button
-                                                class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[18px]">add</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                </div>
-
+                <div id="menu-items" style="display:none;"></div>
             </div>
         </div>
 
@@ -439,11 +60,61 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var categoryNames = { all: "Menu", coffee: "Coffee", espresso: "Espresso", "espresso-drinks": "Espresso Drinks", food: "Food" };
-            var tabs = document.querySelectorAll(".cat-tab");
-            var sections = document.querySelectorAll(".menu-section");
+            var categories = PickBrew.CATEGORIES;
+            var products = PickBrew.PRODUCTS;
             var breadcrumb = document.getElementById("breadcrumb-text");
             var pageTitle = document.getElementById("page-title");
+            var tabsContainer = document.getElementById("cat-tabs");
+            var menuContainer = document.getElementById("menu-items");
+
+            // Build category name map
+            var categoryNames = { all: "Menu" };
+            categories.forEach(function (c) { categoryNames[c.id] = c.name; });
+
+            // Render tabs
+            var tabHtml = '<button data-category="all" class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium bg-[#af7b5c] text-black">All</button>';
+            categories.forEach(function (c) {
+                tabHtml += '<button data-category="' + c.id + '" class="cat-tab shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-600 text-gray-300">' + c.name + '</button>';
+            });
+            tabsContainer.innerHTML = tabHtml;
+
+            // Render menu sections
+            var sectionsHtml = "";
+            categories.forEach(function (cat) {
+                var catProducts = products.filter(function (p) { return p.category === cat.id; });
+                if (catProducts.length === 0) return;
+                sectionsHtml += '<div data-section="' + cat.id + '" class="menu-section">';
+                sectionsHtml += '<h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">' + cat.name + '</h3>';
+                catProducts.forEach(function (p, idx) {
+                    sectionsHtml += '<div class="menu-item block mb-6" data-id="' + p.id + '" data-name="' + p.name.replace(/"/g, '&quot;') + '" data-price="' + p.price.toFixed(2) + '" data-image="' + p.image + '" data-desc="' + p.desc.replace(/"/g, '&quot;') + '">';
+                    sectionsHtml += '<a href="product.html?id=' + p.id + '" class="flex gap-4">';
+                    sectionsHtml += '<img src="' + p.image + '" class="w-14 h-14 rounded-full object-cover" />';
+                    sectionsHtml += '<div class="flex-1">';
+                    sectionsHtml += '<div class="flex justify-between items-start"><div>';
+                    sectionsHtml += '<h3 class="font-semibold">' + p.name + '</h3>';
+                    sectionsHtml += '<p class="text-sm text-gray-400">' + p.desc + '</p>';
+                    sectionsHtml += '</div><span class="font-semibold">$' + p.price.toFixed(2) + '</span></div>';
+                    sectionsHtml += '<div class="flex justify-between items-center mt-3">';
+                    sectionsHtml += '<span class="text-xs text-[#c8a27a]">' + p.tag + '</span>';
+                    sectionsHtml += '<div class="flex items-center gap-2">';
+                    sectionsHtml += '<button class="fav-btn w-7 h-7 rounded-full bg-[#1e1e1e] border border-gray-600 flex items-center justify-center" data-id="' + p.id + '"><span class="material-symbols-outlined text-[16px]">favorite_border</span></button>';
+                    sectionsHtml += '<div class="qty-controls flex items-center gap-2">';
+                    sectionsHtml += '<button class="qty-dec w-7 h-7 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm font-bold" style="display:none;">\u2212</button>';
+                    sectionsHtml += '<span class="qty-count text-xs font-semibold min-w-[18px] text-center" style="display:none;">0</span>';
+                    sectionsHtml += '<button class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">add</span></button>';
+                    sectionsHtml += '</div></div></div></div></a>';
+                    if (idx < catProducts.length - 1) {
+                        sectionsHtml += '<hr class="border-gray-700 mt-6" />';
+                    }
+                    sectionsHtml += '</div>';
+                });
+                sectionsHtml += '</div>';
+            });
+            menuContainer.innerHTML = sectionsHtml;
+
+            // Tab switching
+            var tabs = tabsContainer.querySelectorAll(".cat-tab");
+            var sections = menuContainer.querySelectorAll(".menu-section");
 
             function setCategory(cat) {
                 tabs.forEach(function (t) {
@@ -464,8 +135,9 @@
             var hash = window.location.hash.replace("#", "");
             if (hash && categoryNames[hash]) setCategory(hash);
 
+            // Sync UI (qty + favs)
             function syncUI() {
-                document.querySelectorAll(".menu-item").forEach(function (item) {
+                menuContainer.querySelectorAll(".menu-item").forEach(function (item) {
                     var id = item.dataset.id;
                     var qty = PickBrew.getCartQtyById(id);
                     var dec = item.querySelector(".qty-dec");
@@ -495,46 +167,43 @@
                 });
             }
 
-            document.querySelectorAll(".qty-inc").forEach(function (btn) {
-                btn.addEventListener("click", function (e) {
+            // Event delegation for qty and fav buttons
+            menuContainer.addEventListener("click", function (e) {
+                var incBtn = e.target.closest(".qty-inc");
+                var decBtn = e.target.closest(".qty-dec");
+                var favBtn = e.target.closest(".fav-btn");
+
+                if (incBtn) {
                     e.preventDefault();
                     e.stopPropagation();
-                    var item = btn.closest(".menu-item");
+                    var item = incBtn.closest(".menu-item");
                     PickBrew.quickAdd(item.dataset.id, item.dataset.name, parseFloat(item.dataset.price), item.dataset.image, item.dataset.desc);
                     syncUI();
-                });
-            });
-
-            document.querySelectorAll(".qty-dec").forEach(function (btn) {
-                btn.addEventListener("click", function (e) {
+                } else if (decBtn) {
                     e.preventDefault();
                     e.stopPropagation();
-                    var item = btn.closest(".menu-item");
-                    PickBrew.quickRemove(item.dataset.id);
+                    var item2 = decBtn.closest(".menu-item");
+                    PickBrew.quickRemove(item2.dataset.id);
                     syncUI();
-                });
-            });
-
-            document.querySelectorAll(".fav-btn").forEach(function (btn) {
-                btn.addEventListener("click", function (e) {
+                } else if (favBtn) {
                     e.preventDefault();
                     e.stopPropagation();
-                    var item = btn.closest(".menu-item");
+                    var item3 = favBtn.closest(".menu-item");
                     PickBrew.toggleFavorite({
-                        id: item.dataset.id,
-                        name: item.dataset.name,
-                        price: parseFloat(item.dataset.price),
-                        image: item.dataset.image,
-                        desc: item.dataset.desc
+                        id: item3.dataset.id,
+                        name: item3.dataset.name,
+                        price: parseFloat(item3.dataset.price),
+                        image: item3.dataset.image,
+                        desc: item3.dataset.desc
                     });
-                    PickBrew.showToast(PickBrew.isFavorite(item.dataset.id) ? "Added to favorites" : "Removed from favorites");
+                    PickBrew.showToast(PickBrew.isFavorite(item3.dataset.id) ? "Added to favorites" : "Removed from favorites");
                     syncUI();
-                });
+                }
             });
 
             syncUI();
             document.getElementById("menu-loader").style.display = "none";
-            document.getElementById("menu-items").style.display = "";
+            menuContainer.style.display = "";
         });
     </script>
 </body>

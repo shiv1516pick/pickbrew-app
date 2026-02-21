@@ -12,15 +12,15 @@
 
 <body class="bg-black text-white">
     <div class="lg:hidden max-w-md mx-auto h-screen bg-black flex flex-col overflow-hidden">
-        <div class="h-44 shrink-0 bg-[#5a7479] flex flex-col items-center justify-center gap-2 relative">
-            <div class="absolute top-4 left-0 flex items-center gap-1.5 px-5">
+        <div class="shrink-0 bg-[#5a7479] pt-5 pb-10">
+            <div class="flex items-center gap-1.5 px-5 mb-3">
                 <a href="index.html" class="text-sm opacity-70">Home</a>
                 <span class="material-symbols-outlined text-[14px] opacity-50">chevron_right</span>
                 <span class="text-sm font-semibold">Sign In</span>
             </div>
-            <span class="material-symbols-outlined text-[48px]">local_cafe</span>
-            <h1 class="text-2xl font-semibold">PickBrew</h1>
-            <p class="text-sm opacity-80">Your favorite coffee, one tap away</p>
+            <div class="flex justify-center">
+                <img src="images/logo.png" class="h-20 rounded-2xl bg-white/90 p-2" alt="PickBrew" />
+            </div>
         </div>
         <div class="bg-[#121212] rounded-t-[2.5rem] -mt-6 flex-1 overflow-y-auto">
             <div class="px-6 pt-8 pb-8">
@@ -121,6 +121,7 @@
             if (user.email !== email) { err.textContent = "Email not found"; err.style.display = ""; return; }
             if (user.password !== pass) { err.textContent = "Incorrect password"; err.style.display = ""; return; }
 
+            localStorage.setItem("pb_session", "1");
             PickBrew.showToast("Welcome back, " + user.name.split(" ")[0] + "!");
             setTimeout(function () { window.location.href = "index.html"; }, 600);
         });

@@ -28,42 +28,71 @@
             </div>
         </div>
         <div id="checkout-bar" class="shrink-0 bg-[#121212] border-t border-gray-800 px-6 py-4" style="display:none;">
-            <div id="loyalty-banner"
-                class="flex items-center gap-3 bg-[#1e1e1e] border border-gray-700 rounded-xl px-4 py-3 mb-4">
-                <span class="material-symbols-outlined text-[#af7b5c] text-[24px]">loyalty</span>
-                <div class="flex-1">
-                    <p class="text-xs font-semibold text-white">Join PickBrew Rewards</p>
-                    <p class="text-[11px] text-gray-400">Earn points on every order</p>
+
+            <a href="menu.html"
+                class="flex items-center justify-center gap-1.5 py-1 px-6 border border-gray-600 rounded-full text-sm text-gray-300 font-medium w-fit mx-auto">
+                <span class="material-symbols-outlined text-[12px]">add</span>
+                Add More Items
+            </a>
+
+            <button id="loyalty-btn"
+                class="w-full py-2 bg-[#dc2626] text-white text-center rounded-full font-semibold text-sm my-3">
+                Sign up for loyalty
+            </button>
+
+            <div id="loyalty-member" style="display:none;">
+                <div
+                    class="bg-gradient-to-r from-[#2a1f14] to-[#1e1e1e] border border-[#af7b5c]/30 rounded-2xl px-5 py-4 mb-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div id="loyalty-avatar"
+                            class="w-10 h-10 rounded-full bg-[#af7b5c] flex items-center justify-center text-black text-sm font-bold">
+                            PB</div>
+                        <div class="flex-1">
+                            <p id="loyalty-name" class="text-sm font-bold text-white">Member</p>
+                            <p class="text-[11px] text-[#c8a27a]">PickBrew Rewards Member</p>
+                        </div>
+                        <span class="material-symbols-outlined text-[#af7b5c] text-[20px]">verified</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-black/40 rounded-xl px-4 py-3">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[#c8a27a] text-[18px]">toll</span>
+                            <div>
+                                <p class="text-xs text-gray-400">Available Points</p>
+                                <p id="loyalty-points" class="text-sm font-bold text-white">200 pts</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-400">Worth</p>
+                            <p id="loyalty-value" class="text-sm font-bold text-[#af7b5c]">$2.00</p>
+                        </div>
+                    </div>
                 </div>
-                <a href="profile.html" class="text-xs font-semibold text-[#af7b5c] whitespace-nowrap">Sign Up for
-                    loyalty</a>
             </div>
-            <div class="flex justify-between text-sm text-gray-400 mb-2">
+
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
                 <span>Subtotal</span>
                 <span id="subtotal">$0.00</span>
             </div>
-            <div class="flex justify-between text-sm text-gray-400 mb-3">
+            <div class="flex justify-between text-xs text-gray-400 mb-2">
                 <span>Tax (8%)</span>
                 <span id="tax">$0.00</span>
             </div>
-            <div class="flex justify-between font-semibold mb-3">
+            <div class="flex justify-between font-semibold text-base mb-2">
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
-            <div id="prep-estimate" class="flex items-center justify-center gap-1.5 mb-4">
-                <span class="material-symbols-outlined text-[#af7b5c] text-[16px]">schedule</span>
-                <span class="text-xs text-gray-300">Estimated prep: <span id="prep-time"
-                        class="text-white font-semibold">~10 min</span></span>
-            </div>
             <button id="checkout-btn"
-                class="w-full py-3 bg-[#af7b5c] text-black text-center rounded-full font-semibold text-base mb-3">
-                Checkout
+                class="w-full flex items-center justify-center bg-[#af7b5c] rounded-full px-5 py-2 mb-3">
+                <div class="text-left">
+                    <p class="text-[11px] text-black/50 font-medium leading-tight">Prep time</p>
+                    <p id="prep-time" class="text-sm text-black/70 font-bold leading-tight">10-12 mins</p>
+                </div>
+                <span class="h-[30px] w-[2px] bg-[#533726] mx-4"></span>
+                <div class="flex items-center gap-1 text-white font-bold text-base">
+                    <span>Checkout</span>
+                    <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                </div>
             </button>
-            <a href="menu.html"
-                class="flex items-center justify-center gap-1.5 py-2.5 border border-gray-600 rounded-full text-sm text-gray-300 font-medium">
-                <span class="material-symbols-outlined text-[18px]">add</span>
-                Add More Items
-            </a>
         </div>
         <div class="shrink-0 bg-black border-t border-gray-800 flex justify-around py-3">
             <a href="index.html" class="nav-item">
@@ -85,34 +114,55 @@
             </a>
         </div>
     </div>
+
     <div class="hidden lg:flex min-h-screen items-center justify-center bg-black text-white">
         <p class="opacity-70">Mobile & Tablet only</p>
     </div>
+    
     <script src="app.js"></script>
     <script src="index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var prepTimes = {
-                "brewed-coffee": "5-10 min",
-                "vanilla-cold-brew": "5-8 min",
-                "espresso-shot": "10-15 min",
-                "americano": "5-15 min",
-                "caramel-latte": "10-12 min",
-                "cappuccino": "13-15 min",
-                "iced-mocha": "14-16 min",
-                "bagel-cream-cheese": "13-15 min",
-                "butter-croissant": "12-15 min"
-            };
-            function getMaxPrep(cart) {
-                var maxMin = 0;
+            function getPrepRange(cart) {
+                var minPrep = 0, maxPrep = 0;
                 cart.forEach(function (item) {
-                    var pt = prepTimes[item.id] || "5-10 min";
+                    var p = PickBrew.getProduct(item.id);
+                    var pt = (p && p.prep) || "5-10 min";
                     var parts = pt.replace(/[^0-9\-–]/g, "").split(/[-–]/);
+                    var low = parseInt(parts[0]) || 5;
                     var high = parseInt(parts[1] || parts[0]) || 10;
-                    if (high > maxMin) maxMin = high;
+                    if (low > minPrep) minPrep = low;
+                    if (high > maxPrep) maxPrep = high;
                 });
-                return maxMin;
+                return minPrep + "-" + maxPrep + " mins";
             }
+
+            function getInitials(name) {
+                var parts = name.trim().split(" ");
+                if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+                return name.substring(0, 2).toUpperCase();
+            }
+
+            function renderLoyalty() {
+                var guestBanner = document.getElementById("loyalty-guest");
+                var memberBanner = document.getElementById("loyalty-member");
+                if (PickBrew.isLoggedIn()) {
+                    if (guestBanner) guestBanner.style.display = "none";
+                    if (memberBanner) memberBanner.style.display = "";
+                    var user = PickBrew.getUser();
+                    document.getElementById("loyalty-name").textContent = user.name || "Member";
+                    document.getElementById("loyalty-avatar").textContent = getInitials(user.name || "PB");
+                    var orders = PickBrew.getOrders();
+                    var points = 200 + (orders.length * 50);
+                    var value = (points / 100).toFixed(2);
+                    document.getElementById("loyalty-points").textContent = points + " pts";
+                    document.getElementById("loyalty-value").textContent = "$" + value;
+                } else {
+                    if (guestBanner) guestBanner.style.display = "";
+                    if (memberBanner) memberBanner.style.display = "none";
+                }
+            }
+
             function renderCart() {
                 var cart = PickBrew.getCart();
                 var area = document.getElementById("cart-area");
@@ -121,9 +171,13 @@
                 if (cart.length === 0) {
                     checkout.style.display = "none";
                     area.innerHTML = '<div class="flex flex-col justify-center items-center h-full px-6">' +
-                        '<span class="material-symbols-outlined text-[48px] text-gray-600 mb-3">shopping_cart</span>' +
-                        '<p class="text-[#c8a27a] text-sm text-center leading-relaxed">Your cart is empty</p>' +
-                        '<a href="menu.html" class="inline-block mt-4 px-6 py-2 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">Browse Menu</a>' +
+                        '<div class="w-20 h-20 rounded-full bg-[#1e1e1e] flex items-center justify-center mb-4">' +
+                        '<span class="material-symbols-outlined text-[40px] text-gray-600">shopping_cart</span>' +
+                        '</div>' +
+                        '<h3 class="text-lg font-semibold mb-1">Your cart is empty</h3>' +
+                        '<p class="text-sm text-gray-400 text-center mb-5">Looks like you haven\'t added anything yet</p>' +
+                        '<a href="menu.html" class="inline-flex items-center gap-2 px-6 py-3 bg-[#af7b5c] text-black text-sm font-semibold rounded-full">' +
+                        '<span class="material-symbols-outlined text-[18px]">menu_book</span>Browse Menu</a>' +
                         '</div>';
                     return;
                 }
@@ -131,42 +185,50 @@
                 checkout.style.display = "";
                 var html = '<div class="px-6 pt-8 pb-4">' +
                     '<div class="flex justify-between items-center mb-5">' +
-                    '<span class="text-sm text-gray-400">' + cart.length + (cart.length === 1 ? ' item' : ' items') + '</span>' +
-                    '<button id="clear-cart-btn" class="flex items-center gap-1 text-xs text-red-400 font-medium">' +
-                    '<span class="material-symbols-outlined text-[16px]">remove_shopping_cart</span>Clear Cart</button>' +
+                    '<div class="flex items-center gap-2">' +
+                    '<span class="material-symbols-outlined text-[#af7b5c] text-[18px]">shopping_bag</span>' +
+                    '<span class="text-sm font-semibold">' + cart.length + (cart.length === 1 ? ' item' : ' items') + '</span>' +
+                    '</div>' +
+                    '<button id="clear-cart-btn" class="flex items-center gap-1 text-xs text-red-400/80 font-medium px-3 py-1.5 rounded-full border border-red-400/20 hover:bg-red-400/10">' +
+                    '<span class="material-symbols-outlined text-[14px]">delete_sweep</span>Clear All</button>' +
                     '</div>';
                 cart.forEach(function (item, i) {
                     var details = [];
-                    if (item.size) details.push(item.size);
-                    if (item.strength) details.push(item.strength + " Strength");
+                    if (item.size && item.size !== "Regular") details.push(item.size);
+                    if (item.strength && item.strength !== "Regular") details.push(item.strength);
                     if (item.flavor && item.flavor !== "None") details.push(item.flavor);
                     if (item.addons && item.addons.length) details.push(item.addons.join(", "));
-                    var detailStr = details.join(", ");
+                    var detailStr = details.join(" · ");
+                    var isFav = PickBrew.isFavorite(item.id);
 
-                    html += '<div class="mb-6">' +
-                        '<div class="flex gap-4">' +
-                        '<img src="' + item.image + '" class="w-14 h-14 rounded-full object-cover" />' +
-                        '<div class="flex-1">' +
-                        '<div class="flex justify-between items-start">' +
-                        '<div>' +
-                        '<h3 class="font-semibold">' + item.name + '</h3>' +
-                        '<p class="text-sm text-gray-400">' + detailStr + '</p>' +
-                        (item.note ? '<p class="text-sm text-gray-400 mt-1"><span class="font-semibold text-gray-300">Note:</span> ' + item.note + '</p>' : '') +
+                    html += '<div class="bg-[#1a1a1a] rounded-2xl p-4 mb-3">' +
+                        '<div class="flex gap-3">' +
+                        '<img src="' + item.image + '" class="w-14 h-14 rounded-xl object-cover" />' +
+                        '<div class="flex-1 min-w-0">' +
+                        '<div class="flex justify-between items-start gap-2">' +
+                        '<div class="min-w-0">' +
+                        '<h3 class="font-semibold text-sm truncate">' + item.name + '</h3>' +
+                        (detailStr ? '<p class="text-xs text-gray-400 mt-0.5 truncate">' + detailStr + '</p>' : '') +
                         '</div>' +
-                        '<div class="flex gap-3 text-[#c8a27a]">' +
-                        '<span class="material-symbols-outlined cursor-pointer text-[20px] fav-cart-btn" data-index="' + i + '">favorite</span>' +
-                        '<span class="material-symbols-outlined cursor-pointer text-[20px] remove-btn" data-index="' + i + '">delete</span>' +
-                        '</div></div>' +
-                        '<div class="flex justify-between items-center mt-4">' +
-                        '<div class="flex items-center gap-3">' +
-                        '<button class="qty-dec w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold" data-index="' + i + '">−</button>' +
-                        '<span class="text-sm font-medium">' + item.qty + '</span>' +
-                        '<button class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center font-bold" data-index="' + i + '">+</button>' +
+                        '<span class="font-bold text-sm shrink-0">$' + (item.price * item.qty).toFixed(2) + '</span>' +
                         '</div>' +
-                        '<span class="font-semibold">$' + (item.price * item.qty).toFixed(2) + '</span>' +
-                        '</div></div></div>' +
-                        (i < cart.length - 1 ? '<hr class="border-gray-700 mt-6" />' : '') +
-                        '</div>';
+                        (item.note ? '<p class="text-xs text-gray-500 mt-1.5 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">edit_note</span>' + item.note + '</p>' : '') +
+                        '<div class="flex justify-between items-center mt-3">' +
+                        '<div class="flex items-center gap-2">' +
+                        '<button class="qty-dec w-7 h-7 rounded-full bg-[#2a2a2a] border border-gray-700 text-white flex items-center justify-center text-sm font-bold" data-index="' + i + '">−</button>' +
+                        '<span class="text-sm font-semibold min-w-[20px] text-center">' + item.qty + '</span>' +
+                        '<button class="qty-inc w-7 h-7 rounded-full bg-[#af7b5c] text-black flex items-center justify-center text-sm font-bold" data-index="' + i + '">+</button>' +
+                        '</div>' +
+                        '<div class="flex items-center gap-2">' +
+                        '<button class="fav-cart-btn w-8 h-8 rounded-full flex items-center justify-center ' + (isFav ? 'bg-red-500/10' : 'bg-[#2a2a2a]') + '" data-index="' + i + '">' +
+                        '<span class="material-symbols-outlined text-[18px] ' + (isFav ? 'text-red-400' : 'text-gray-500') + '">' + (isFav ? 'favorite' : 'favorite_border') + '</span>' +
+                        '</button>' +
+                        '<button class="remove-btn w-8 h-8 rounded-full bg-[#2a2a2a] flex items-center justify-center" data-index="' + i + '">' +
+                        '<span class="material-symbols-outlined text-[18px] text-gray-500">delete</span>' +
+                        '</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div></div></div>';
                 });
                 html += '</div>';
                 area.innerHTML = html;
@@ -176,12 +238,10 @@
                 document.getElementById("subtotal").textContent = "$" + subtotal.toFixed(2);
                 document.getElementById("tax").textContent = "$" + tax.toFixed(2);
                 document.getElementById("total").textContent = "$" + total.toFixed(2);
-                document.getElementById("checkout-btn").textContent = "Checkout — $" + total.toFixed(2);
-                var maxPrep = getMaxPrep(cart);
-                document.getElementById("prep-time").textContent = "~" + maxPrep + " min";
-                var loyaltyBanner = document.getElementById("loyalty-banner");
-                if (PickBrew.isLoggedIn()) loyaltyBanner.style.display = "none";
-                else loyaltyBanner.style.display = "";
+                document.getElementById("prep-time").textContent = getPrepRange(cart);
+
+                renderLoyalty();
+
                 area.querySelectorAll(".qty-dec").forEach(function (btn) {
                     btn.addEventListener("click", function () {
                         PickBrew.updateQty(parseInt(btn.dataset.index), -1);
@@ -208,6 +268,7 @@
                         var item = c[parseInt(btn.dataset.index)];
                         PickBrew.toggleFavorite({ id: item.id, name: item.name, price: item.price, image: item.image, desc: item.desc || "" });
                         PickBrew.showToast(PickBrew.isFavorite(item.id) ? "Added to favorites" : "Removed from favorites");
+                        renderCart();
                     });
                 });
                 var clearBtn = document.getElementById("clear-cart-btn");
@@ -226,6 +287,17 @@
                 if (cart.length === 0) return;
                 window.location.href = "checkout.html";
             });
+
+            var loyaltyBtn = document.getElementById("loyalty-btn");
+            if (loyaltyBtn) {
+                loyaltyBtn.addEventListener("click", function () {
+                    if (PickBrew.isLoggedIn()) {
+                        window.location.href = "profile.html";
+                    } else {
+                        window.location.href = "signup.html";
+                    }
+                });
+            }
 
             renderCart();
         });

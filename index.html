@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="absolute bottom-10 left-5 right-5">
-                <p class="text-sm opacity-80 mb-1">Good morning</p>
+                <p id="greeting" class="text-sm opacity-80 mb-1">Good morning</p>
                 <h1 class="text-xl font-semibold leading-snug">What would you like<br />to order today?</h1>
             </div>
         </div>
@@ -51,72 +51,9 @@
                     <a href="cart.html">Cart</a>
                 </div>
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Categories</h3>
-
-                <a href="menu.html#coffee" class="flex items-center gap-5 mb-5">
-                    <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589"
-                        class="w-20 h-20 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <h2 class="text-lg font-semibold">Coffee</h2>
-                        <p class="text-sm text-gray-400">Brewed, drip & pour over</p>
-                    </div>
-                    <span class="material-symbols-outlined text-gray-500">chevron_right</span>
-                </a>
-                <hr class="border-gray-700 mb-5" />
-
-                <a href="menu.html#espresso" class="flex items-center gap-5 mb-5">
-                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                        class="w-20 h-20 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <h2 class="text-lg font-semibold">Espresso</h2>
-                        <p class="text-sm text-gray-400">Shots, americano & more</p>
-                    </div>
-                    <span class="material-symbols-outlined text-gray-500">chevron_right</span>
-                </a>
-                <hr class="border-gray-700 mb-5" />
-
-                <a href="menu.html#espresso-drinks" class="flex items-center gap-5 mb-5">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                        class="w-20 h-20 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <h2 class="text-lg font-semibold">Espresso Drinks</h2>
-                        <p class="text-sm text-gray-400">Lattes, cappuccinos & mochas</p>
-                    </div>
-                    <span class="material-symbols-outlined text-gray-500">chevron_right</span>
-                </a>
-                <hr class="border-gray-700 mb-5" />
-
-                <a href="menu.html#food" class="flex items-center gap-5 mb-5">
-                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0"
-                        class="w-20 h-20 rounded-full object-cover" />
-                    <div class="flex-1">
-                        <h2 class="text-lg font-semibold">Food</h2>
-                        <p class="text-sm text-gray-400">Bagels, pastries & snacks</p>
-                    </div>
-                    <span class="material-symbols-outlined text-gray-500">chevron_right</span>
-                </a>
-                <hr class="border-gray-700 mb-5" />
+                <div id="home-categories"></div>
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Popular Now</h3>
-
-                <div class="flex gap-3 overflow-x-auto pb-2">
-                    <a href="product.html?id=brewed-coffee" class="shrink-0 w-32">
-                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
-                            class="w-32 h-32 rounded-2xl object-cover mb-2" />
-                        <h4 class="text-sm font-semibold truncate">Brewed Coffee</h4>
-                        <p class="text-xs text-[#c8a27a]">$4.29</p>
-                    </a>
-                    <a href="product.html?id=iced-mocha" class="shrink-0 w-32">
-                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
-                            class="w-32 h-32 rounded-2xl object-cover mb-2" />
-                        <h4 class="text-sm font-semibold truncate">Iced Mocha</h4>
-                        <p class="text-xs text-[#c8a27a]">$5.99</p>
-                    </a>
-                    <a href="product.html?id=vanilla-cold-brew" class="shrink-0 w-32">
-                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735"
-                            class="w-32 h-32 rounded-2xl object-cover mb-2" />
-                        <h4 class="text-sm font-semibold truncate">Vanilla Cold Brew</h4>
-                        <p class="text-xs text-[#c8a27a]">$4.79</p>
-                    </a>
-                </div>
+                <div id="home-popular" class="flex gap-3 overflow-x-auto pb-2"></div>
 
             </div>
         </div>
@@ -158,6 +95,44 @@
                 });
             }, 2500);
         })();
+        document.addEventListener("DOMContentLoaded", function () {
+            // Dynamic greeting
+            var hour = new Date().getHours();
+            document.getElementById("greeting").textContent = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+
+            // Render all 14 categories
+            var catContainer = document.getElementById("home-categories");
+            var html = "";
+            PickBrew.CATEGORIES.forEach(function (cat, i) {
+                var products = PickBrew.getProductsByCategory(cat.id);
+                var img = products.length > 0 ? products[0].image : "";
+                html += '<a href="menu.html#' + cat.id + '" class="flex items-center gap-5 mb-5">';
+                html += '<img src="' + img + '" class="w-20 h-20 rounded-full object-cover" />';
+                html += '<div class="flex-1">';
+                html += '<h2 class="text-lg font-semibold">' + cat.name + '</h2>';
+                html += '<p class="text-sm text-gray-400">' + (cat.desc || "") + '</p>';
+                html += '</div>';
+                html += '<span class="material-symbols-outlined text-gray-500">chevron_right</span>';
+                html += '</a>';
+                if (i < PickBrew.CATEGORIES.length - 1) html += '<hr class="border-gray-700 mb-5" />';
+            });
+            catContainer.innerHTML = html;
+
+            // Render popular items
+            var popularIds = ["caramel-latte", "iced-mocha", "vanilla-cold-brew", "hot-chai-latte"];
+            var popContainer = document.getElementById("home-popular");
+            var popHtml = "";
+            popularIds.forEach(function (id) {
+                var p = PickBrew.getProduct(id);
+                if (!p) return;
+                popHtml += '<a href="product.html?id=' + p.id + '" class="shrink-0 w-32">';
+                popHtml += '<img src="' + p.image + '" class="w-32 h-32 rounded-2xl object-cover mb-2" />';
+                popHtml += '<h4 class="text-sm font-semibold truncate">' + p.name + '</h4>';
+                popHtml += '<p class="text-xs text-[#c8a27a]">$' + p.price.toFixed(2) + '</p>';
+                popHtml += '</a>';
+            });
+            popContainer.innerHTML = popHtml;
+        });
     </script>
 </body>
 

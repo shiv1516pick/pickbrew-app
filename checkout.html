@@ -229,12 +229,6 @@
             var cart = PickBrew.getCart();
             if (cart.length === 0) { window.location.href = "cart.html"; return; }
 
-            var prepTimes = {
-                "brewed-coffee": "5-10", "vanilla-cold-brew": "5-8", "espresso-shot": "10-15",
-                "americano": "5-15", "caramel-latte": "10-12", "cappuccino": "13-15",
-                "iced-mocha": "14-16", "bagel-cream-cheese": "13-15", "butter-croissant": "12-15"
-            };
-
             var state = { tipPercent: 15, tipCustom: null, pickup: "Counter", table: "", phone: "", cardAdded: false };
             var subtotal = PickBrew.getCartTotal();
             var tax = +(subtotal * 0.08).toFixed(2);
@@ -258,10 +252,11 @@
             });
             document.getElementById("order-summary").innerHTML = summaryHtml;
 
-            // --- Prep Time ---
+            // --- Prep Time (from shared data) ---
             var maxPrep = 0;
             cart.forEach(function (item) {
-                var pt = prepTimes[item.id] || "5-10";
+                var p = PickBrew.getProduct(item.id);
+                var pt = (p && p.prep) || "5-10 min";
                 var parts = pt.replace(/[^0-9\-–]/g, "").split(/[-–]/);
                 var high = parseInt(parts[1] || parts[0]) || 10;
                 if (high > maxPrep) maxPrep = high;
